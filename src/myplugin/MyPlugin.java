@@ -1,15 +1,11 @@
 package myplugin;
 
-import java.io.File;
-
-import javax.swing.JOptionPane;
-
+import com.nomagic.actions.NMAction;
+import com.nomagic.magicdraw.actions.ActionsConfiguratorsManager;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.options.ProjectOptions;
 
-
-import com.nomagic.actions.NMAction;
-import com.nomagic.magicdraw.actions.ActionsConfiguratorsManager;
+import java.io.File;
 
 /** MagicDraw plugin that performes code generation */
 public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
@@ -17,7 +13,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 	String pluginDir = null; 
 	
 	public void init() {
-		JOptionPane.showMessageDialog( null, "My Plugin init");
+		//JOptionPane.showMessageDialog( null, "My Plugin init");
 		
 		pluginDir = getDescriptor().getPluginDirectory().getPath();
 		
@@ -29,7 +25,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 		 * ProjectOptions.xml and take ejb generator options */
 		
 		//for test purpose only:
-		GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "ejbclass", "templates", "{0}.java", true, "ejb"); 				
+		GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "/ejbclass", "templates", "{0}.java", true, "ejb");
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("EJBGenerator", ejbOptions);
 				
 		ejbOptions.setTemplateDir(pluginDir + File.separator + ejbOptions.getTemplateDir()); //apsolutna putanja
