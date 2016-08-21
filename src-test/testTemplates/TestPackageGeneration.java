@@ -20,13 +20,16 @@ import java.util.List;
 
 public class TestPackageGeneration {
 
+    private FMModel fmModel = new FMModel();
+
     public TestPackageGeneration() {
 
     }
 
     private void initModel() {
 
-        List<FMClass> classes = FMModel.getInstance().getClasses();
+
+        List<FMClass> classes = fmModel.getClasses();
 
         classes.clear();
 
@@ -69,7 +72,7 @@ public class TestPackageGeneration {
         initModel();
         GeneratorOptions go = ProjectOptions.getProjectOptions().getGeneratorOptions().get("EJBGenerator");
         EJBGenerator g = new EJBGenerator(go);
-        g.generate();
+        g.generate(fmModel);
     }
 
     public static void main(String[] args) {

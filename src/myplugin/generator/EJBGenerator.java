@@ -1,19 +1,16 @@
 package myplugin.generator;
 
 import freemarker.template.TemplateException;
+import myplugin.generator.fmmodel.FMClass;
+import myplugin.generator.fmmodel.FMModel;
+import myplugin.generator.options.GeneratorOptions;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import javax.swing.JOptionPane;
-import myplugin.generator.fmmodel.FMClass;
-import myplugin.generator.fmmodel.FMModel;
-import myplugin.generator.options.GeneratorOptions;
-import myplugin.generator.options.ProjectOptions;
 
 /** EJB generator that now generates incomplete ejb classes based on MagicDraw 
  * class model 
@@ -27,7 +24,7 @@ public class EJBGenerator extends BasicGenerator {
 		super(generatorOptions);			
 	}
 
-	public void generate() {
+	public void generate(FMModel model) {
 		
 		try {
 			super.generate();
@@ -35,11 +32,11 @@ public class EJBGenerator extends BasicGenerator {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 
-		List<FMClass> classes = FMModel.getInstance().getClasses();
+		List<FMClass> classes = model.getClasses();
 		for (int i = 0; i < classes.size(); i++) {
 			FMClass cl = classes.get(i);			
 				Writer out;
-				Map<String, Object> context = new HashMap<String, Object>();
+				Map<String, Object> context = new HashMap<>();
 				try {
 					out = getWriter(cl.getName(), cl.getTypePackage());
 					if (out != null) {

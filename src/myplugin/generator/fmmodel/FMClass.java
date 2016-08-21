@@ -11,10 +11,10 @@ public class FMClass extends FMType {
 	
 
 	//Class properties
-	private List<FMProperty> FMProperties = new ArrayList<FMProperty>();
+	private List<FMProperty> FMProperties = new ArrayList<>();
 	
 	//list of packages (for import declarations) 
-	private List<String> importedPackages = new ArrayList<String>();
+	private List<String> importedPackages = new ArrayList<>();
 	
 	/** @ToDo: add list of methods */
 	

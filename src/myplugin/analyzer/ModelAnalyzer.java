@@ -31,33 +31,34 @@ import java.util.List;
 
 public class ModelAnalyzer {
     //root model package
-    private Package root;
+    private Package _root;
 
     //java root package for generated code
-    private String filePackage;
+    private String _filePackage;
 
-    public ModelAnalyzer(Package root, String filePackage) {
+    private FMModel _model;
+
+    public ModelAnalyzer(Package root, String filePackage, FMModel model) {
         super();
-        this.root = root;
-        this.filePackage = filePackage;
+        _root = root;
+        _filePackage = filePackage;
+        _model = model;
     }
 
     public Package getRoot() {
-        return root;
+        return _root;
     }
 
     public void prepareModel() throws AnalyzeException {
-        FMModel.getInstance().getClasses().clear();
-        FMModel.getInstance().getEnumerations().clear();
-        processPackage(root, filePackage);
+        processPackage(_root, _filePackage);
     }
 
-    public void processPackage(Package pack, String packageOwner) throws AnalyzeException {
+    private void processPackage(Package pack, String packageOwner) throws AnalyzeException {
         if (pack.getName() == null)
             throw new AnalyzeException("Packages must have names!");
 
         String packageName = packageOwner;
-        if (pack != root) {
+        if (pack != _root) {
             packageName += "." + pack.getName();
         }
 
@@ -81,8 +82,7 @@ public class ModelAnalyzer {
                 if (ownedElement instanceof Class) {
                     Class cl = (Class) ownedElement;
                     GlobalLogger.Log("Class detected: " + cl.getQualifiedName());
-                    FMClass fmClass = getClassData(cl, packageName);
-                    FMModel.getInstance().getClasses().add(fmClass);
+                    _model.getClasses().add(getClassData(cl, packageName));
                     continue;
                 }
 
@@ -90,8 +90,7 @@ public class ModelAnalyzer {
                 if (ownedElement instanceof Enumeration) {
                     Enumeration en = (Enumeration) ownedElement;
                     GlobalLogger.Log("Enumeration detected: " + en.getQualifiedName());
-                    FMEnumeration fmEnumeration = getEnumerationData(en, packageName);
-                    FMModel.getInstance().getEnumerations().add(fmEnumeration);
+                    _model.getEnumerations().add(getEnumerationData(en, packageName));
                     continue;
                 }
 
@@ -169,11 +168,6 @@ public class ModelAnalyzer {
             return parser.parse(property, _class);
         }
 
-        Stereotype uiAssocEndStereotype = StereotypesHelper.getAppliedStereotypeByString(property, "UIAssocEnd");
-        if (uiAssocEndStereotype != null) {
-            ObjectParser<UIAssocEnd> parser = new ObjectParser<>(new UIAssocEndStrategy());
-            return parser.parse(property, _class);
-        }
 
         ObjectParser<FMProperty> parser = new ObjectParser<>(new FMPropertyStrategy());
         return parser.parse(property, _class);

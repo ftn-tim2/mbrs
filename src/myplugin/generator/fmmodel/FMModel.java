@@ -12,20 +12,9 @@ public class FMModel {
 	
 	private List<FMClass> classes = new ArrayList<FMClass>();
 	private List<FMEnumeration> enumerations = new ArrayList<FMEnumeration>();
-	
-	//....
-	/** @ToDo: Add lists of other elements, if needed */
-	private FMModel() {
+
+	public FMModel() {
 		
-	}
-	
-	private static FMModel model;
-	
-	public static FMModel getInstance() {
-		if (model == null) {
-			model = new FMModel();			
-		}
-		return model;
 	}
 	
 	public List<FMClass> getClasses() {
