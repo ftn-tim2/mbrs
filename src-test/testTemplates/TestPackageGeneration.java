@@ -79,8 +79,8 @@ public class TestPackageGeneration {
         TestPackageGeneration tg = new TestPackageGeneration();
         /** @Todo: load project options from xml file */
 
-        //for test purpose only:
-        GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "ejbclass", "./resources/templates/", "{0}.java", true, "ejb");
+        //for test purpose only:  "./resources/templates/"
+        GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "middleLayer", "./resources/templates/", "{0}.txt", true, "JDS");
         ProjectOptions.getProjectOptions().getGeneratorOptions().put("EJBGenerator", ejbOptions);
 
         tg.testGenerator();
