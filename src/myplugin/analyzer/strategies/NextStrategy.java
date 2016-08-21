@@ -52,17 +52,17 @@ public class NextStrategy implements IParsingStrategy<Next> {
 		//Attributes from UIProperty stereotype
 		List lengthList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "length");
 		if(lengthList.size() == 1)
-			next.setLength((Integer) lengthList.get(0)); 
+			next.setMax_length((Integer) lengthList.get(0));
 
 
 		List precisionList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "precision");
 		if(precisionList.size() == 1)
-			next.setPrecision((Integer) precisionList.get(0));
+			next.setDecimal_places((Integer) precisionList.get(0));
 
 
 		List componentTypeList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "component");
 		if(componentTypeList.size() == 1){
-			next.setComponentType(ComponentType.getComponentNumberByName(((EnumerationLiteral)componentTypeList.get(0)).getName()));
+			next.setComponent(ComponentType.getComponentNumberByName(((EnumerationLiteral)componentTypeList.get(0)).getName()));
 		}
 
 		List nullableList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "nullable");

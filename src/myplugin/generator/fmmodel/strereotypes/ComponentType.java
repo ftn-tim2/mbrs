@@ -9,9 +9,10 @@ public enum ComponentType {
     INTEGER_FILED(9, "integerField"),
 	//COMBOBOX(3, "combobox"),
 	CHECKBOX(4, "checkbox"), 
-	DATEPICKER(5, "datePicker"),
+	DATE_PICKER(5, "datePicker"),
 	RADIO_BUTTON(7, "radioButton"),
 	FLOAT_FIELD(8, "floatField"),
+	DROP_DOWN(9,"dropdown")
 	;
 
 	private int id;
@@ -40,7 +41,7 @@ public enum ComponentType {
 			if(component.getId() == id)
 				return component;
 		}
-		throw new IllegalArgumentException("No day found with day number: " + id);
+		throw new IllegalArgumentException("No componentType was  found with name: " + id);
 	}
 
 	public static ComponentType getComponentNumberByName(String componentName){
@@ -48,7 +49,7 @@ public enum ComponentType {
 			if(component.getName().equalsIgnoreCase(componentName))
 				return component;
 		}
-		throw new IllegalArgumentException("No day found with name: " + componentName);
+		throw new IllegalArgumentException("No componentType was  found with name: " + componentName);
 	}
 	
 	

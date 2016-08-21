@@ -5,6 +5,7 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.*;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Package;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
+import myplugin.GlobalLogger;
 import myplugin.analyzer.parser.ObjectParser;
 import myplugin.analyzer.strategies.*;
 import myplugin.generator.fmmodel.FMClass;
@@ -13,7 +14,6 @@ import myplugin.generator.fmmodel.FMModel;
 import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.fmmodel.strereotypes.*;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -53,58 +53,51 @@ public class ModelAnalyzer {
     }
 
     public void processPackage(Package pack, String packageOwner) throws AnalyzeException {
-//		JOptionPane.showMessageDialog(null, "processPackage "+ pack.getName());
         if (pack.getName() == null)
             throw new AnalyzeException("Packages must have names!");
 
         String packageName = packageOwner;
         if (pack != root) {
-//			JOptionPane.showMessageDialog(null, "NOT EQUAL");
             packageName += "." + pack.getName();
         }
 
         if (pack.hasOwnedElement()) {
-//			JOptionPane.showMessageDialog(null, "HAS ELEMENT");
             for (Iterator<Element> it = pack.getOwnedElement().iterator(); it.hasNext(); ) {
                 Element ownedElement = it.next();
-//				JOptionPane.showMessageDialog(null, "found " + ownedElement.toString());
-                if (ownedElement instanceof Class) {
-                    Class cl = (Class) ownedElement;
-//					JOptionPane.showMessageDialog(null, "class " + cl.toString());
-                    System.out.println("Class detected: " + cl.getQualifiedName());
-                    FMClass fmClass = getClassData(cl, packageName);
-                    FMModel.getInstance().getClasses().add(fmClass);
-                    continue;
-                }
 
-                if (ownedElement instanceof Enumeration) {
-                    Enumeration en = (Enumeration) ownedElement;
-//					JOptionPane.showMessageDialog(null, "enum " + en.toString());
-                    System.out.println("Enumeration detected: " + en.getQualifiedName());
-                    FMEnumeration fmEnumeration = getEnumerationData(en, packageName);
-                    FMModel.getInstance().getEnumerations().add(fmEnumeration);
-                    continue;
-                }
-
+                //Package
                 if (ownedElement instanceof Package) {
                     Package en = (Package) ownedElement;
-//					JOptionPane.showMessageDialog(null, "Package " + en.toString());
-                    System.out.println("Package detected: " + en.getQualifiedName());
-                    //Temp hack
-                    if (!en.getQualifiedName().contains("Profile")) {
+                    GlobalLogger.Log("Package detected: " + en.getQualifiedName());
+                    Stereotype stereoType = StereotypesHelper.getAppliedStereotypeByString(en, ToGenerate.NAME);
+                    if (stereoType != null) {
+                        GlobalLogger.Log("Package detected: " + en.getQualifiedName() + " -- " + ToGenerate.NAME);
                         processPackage(en, packageName);
                     }
                     continue;
                 }
 
-                if (ownedElement instanceof Comment) {
-                    Comment comment = (Comment) ownedElement;
-                    System.out.println("Comment detected: " + comment.getBody());
-                    //Release
+                //Class
+                if (ownedElement instanceof Class) {
+                    Class cl = (Class) ownedElement;
+                    GlobalLogger.Log("Class detected: " + cl.getQualifiedName());
+                    FMClass fmClass = getClassData(cl, packageName);
+                    FMModel.getInstance().getClasses().add(fmClass);
                     continue;
                 }
 
-                if (ownedElement instanceof Association) {
+                //Enumeration
+                if (ownedElement instanceof Enumeration) {
+                    Enumeration en = (Enumeration) ownedElement;
+                    GlobalLogger.Log("Enumeration detected: " + en.getQualifiedName());
+                    FMEnumeration fmEnumeration = getEnumerationData(en, packageName);
+                    FMModel.getInstance().getEnumerations().add(fmEnumeration);
+                    continue;
+                }
+
+                //Association
+                //disabled
+                /*if (ownedElement instanceof Association) {
                     Association association = (Association) ownedElement;
 
                     Collection<Element> assocRoles = association.getRelatedElement();
@@ -121,26 +114,20 @@ public class ModelAnalyzer {
 
                     throw new AnalyzeException("N-ary association detected which is not supported in the current version of analyzer");
 
-                    //Release
-//					continue;
-                }
+                }*/
 
-                if (ownedElement instanceof Diagram) {
-                    Diagram diagram = (Diagram) ownedElement;
-                    System.out.println("Diagram detected: " + diagram.getQualifiedName());
-                    //Release
-                    continue;
-                }
+                //Continue
+                if (ownedElement instanceof Comment ||
+                        ownedElement instanceof Diagram ||
+                        ownedElement instanceof PackageImport ||
+                        ownedElement instanceof Association ||
+                        ownedElement instanceof InstanceSpecification) {
 
-                if (ownedElement instanceof PackageImport)
-                {
-                    PackageImport packageImport = (PackageImport) ownedElement;
-                    System.err.println("PackageImport type detected: " + packageImport.toString());
+                    //Release
                     continue;
                 }
 
                 throw new AnalyzeException("Unidentified type detected: " + ownedElement.getClass());
-
             }
         }
     }
@@ -155,53 +142,47 @@ public class ModelAnalyzer {
 
         Stereotype standardStereotype = StereotypesHelper.getAppliedStereotypeByString(cl, "StandardPage");
         if (standardStereotype != null) {
-            ObjectParser<StandardPage> parser = new ObjectParser<StandardPage>(new StandardPageStrategy());
+            ObjectParser<StandardPage> parser = new ObjectParser<>(new StandardPageStrategy());
             return parser.parse(cl, packageName);
         }
 
         Stereotype indexStereotype = StereotypesHelper.getAppliedStereotypeByString(cl, "IndexPage");
         if (indexStereotype != null) {
-            ObjectParser<IndexPage> parser = new ObjectParser<IndexPage>(new IndexPageStrategy());
+            ObjectParser<IndexPage> parser = new ObjectParser<>(new IndexPageStrategy());
             return parser.parse(cl, packageName);
         }
 
         throw new AnalyzeException("Parser not available to that class: " + cl.getQualifiedName());
     }
 
-    public static FMProperty getPropertyData(Property property, Class cclass) throws AnalyzeException {
-        //	JOptionPane.showMessageDialog(null, "PropertyData!");
-        Stereotype editableStereotype = StereotypesHelper.getAppliedStereotypeByString(property, "Editable");
-        if (editableStereotype != null) {
-            ObjectParser<Editable> parser = new ObjectParser<Editable>(new EditableStrategy());
-            return parser.parse(property, cclass);
-        }
+    public static FMProperty getPropertyData(Property property, Class _class) throws AnalyzeException {
 
-        Stereotype readOnlyStereotype = StereotypesHelper.getAppliedStereotypeByString(property, "ReadOnly");
+        Stereotype readOnlyStereotype = StereotypesHelper.getAppliedStereotypeByString(property, UIProperty.NAME);
         if (readOnlyStereotype != null) {
-            ObjectParser<ReadOnly> parser = new ObjectParser<ReadOnly>(new ReadOnlyStrategy());
-            return parser.parse(property, cclass);
+            ObjectParser<UIProperty> parser = new ObjectParser<>(new UIPropertyStrategy());
+            return parser.parse(property, _class);
         }
 
         Stereotype nextStereotype = StereotypesHelper.getAppliedStereotypeByString(property, "Next");
         if (nextStereotype != null) {
-            ObjectParser<Next> parser = new ObjectParser<Next>(new NextStrategy());
-            return parser.parse(property, cclass);
+            ObjectParser<Next> parser = new ObjectParser<>(new NextStrategy());
+            return parser.parse(property, _class);
         }
 
         Stereotype uiAssocEndStereotype = StereotypesHelper.getAppliedStereotypeByString(property, "UIAssocEnd");
         if (uiAssocEndStereotype != null) {
-            ObjectParser<UIAssocEnd> parser = new ObjectParser<UIAssocEnd>(new UIAssocEndStrategy());
-            return parser.parse(property, cclass);
+            ObjectParser<UIAssocEnd> parser = new ObjectParser<>(new UIAssocEndStrategy());
+            return parser.parse(property, _class);
         }
 
-        ObjectParser<FMProperty> parser = new ObjectParser<FMProperty>(new FMPropertyStrategy());
-        return parser.parse(property, cclass);
+        ObjectParser<FMProperty> parser = new ObjectParser<>(new FMPropertyStrategy());
+        return parser.parse(property, _class);
 
         //throw new IllegalArgumentException("Parser not available to that property");
     }
 
     private static FMEnumeration getEnumerationData(Enumeration enumeration, String packageName) throws AnalyzeException {
-        ObjectParser<FMEnumeration> parser = new ObjectParser<FMEnumeration>(new EnumerationStrategy());
+        ObjectParser<FMEnumeration> parser = new ObjectParser<>(new EnumerationStrategy());
         return parser.parse(enumeration, packageName);
     }
 
