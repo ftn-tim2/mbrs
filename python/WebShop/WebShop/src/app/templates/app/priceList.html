@@ -1,0 +1,63 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>PriceList</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{priceListForm.listNumber.label}}</label>
+                  <div class="col-lg-7">
+                    {{priceListForm.listNumber}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{priceListForm.activeFromDate.label}}</label>
+                  <div class="col-lg-7">
+                    {{priceListForm.activeFromDate}}
+                  </div>        
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_priceList' priceList_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="priceListItem">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-priceListItem" aria-expanded="true" aria-controls="collapse-priceListItem">
+          priceListItem list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-priceListItem" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="priceListItem">
+      <div class="panel-body">      
+        <ul>
+        {% for priceListItem  in priceListItems %}
+            {% if priceListItem.name == null %}
+            <li> <a href="{% url 'priceListItem' priceListItem.id %}" > {{priceListItem}} priceListItem.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'priceListItem' priceListItem.id %}" > {{priceListItem.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

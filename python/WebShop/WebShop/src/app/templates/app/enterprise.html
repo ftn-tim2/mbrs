@@ -1,0 +1,67 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Enterprise</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{enterpriseForm.name.label}}</label>
+                  <div class="col-lg-7">
+                    {{enterpriseForm.name}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{enterpriseForm.address.label}}</label>
+                  <div class="col-lg-7">
+                    {{enterpriseForm.address}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{enterpriseForm.city.label}}</label>
+                  <div class="col-lg-7">
+                    {{enterpriseForm.city}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_enterprise' enterprise_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="department">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-department" aria-expanded="true" aria-controls="collapse-department">
+          department list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-department" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="department">
+      <div class="panel-body">      
+        <ul>
+        {% for department  in departments %}
+            {% if department.name == null %}
+            <li> <a href="{% url 'department' department.id %}" > {{department}} department.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'department' department.id %}" > {{department.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

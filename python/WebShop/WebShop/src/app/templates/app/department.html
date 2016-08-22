@@ -1,0 +1,71 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Department</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{departmentForm.departmentName.label}}</label>
+                  <div class="col-lg-7">
+                    {{departmentForm.departmentName}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{departmentForm.address.label}}</label>
+                  <div class="col-lg-7">
+                    {{departmentForm.address}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{departmentForm.enterprise.label}}</label>
+                  <div class="col-lg-7">
+                    {{departmentForm.enterprise}}
+                  </div>  
+                  <label class="col-lg-3 control-label">{{departmentForm.city.label}}</label>
+                  <div class="col-lg-7">
+                    {{departmentForm.city}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_department' department_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="stock">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-stock" aria-expanded="true" aria-controls="collapse-stock">
+          stock list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-stock" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="stock">
+      <div class="panel-body">      
+        <ul>
+        {% for stock  in stocks %}
+            {% if stock.name == null %}
+            <li> <a href="{% url 'stock' stock.id %}" > {{stock}} stock.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'stock' stock.id %}" > {{stock.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

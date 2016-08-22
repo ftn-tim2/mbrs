@@ -1,0 +1,55 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Payment</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{paymentForm.dateReceived.label}}</label>
+                  <div class="col-lg-7">
+                    {{paymentForm.dateReceived}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{paymentForm.paymetMethod.label}}</label>
+                  <div class="col-lg-7">
+                    {{paymentForm.paymetMethod}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{paymentForm.amountReceived.label}}</label>
+                  <div class="col-lg-7">
+                    {{paymentForm.amountReceived}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{paymentForm.canceled.label}}</label>
+                  <div class="col-lg-7">
+                    {{paymentForm.canceled}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{paymentForm.order.label}}</label>
+                  <div class="col-lg-7">
+                    {{paymentForm.order}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_payment' payment_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+  </div>  
+</div>
+
+{% endblock %}

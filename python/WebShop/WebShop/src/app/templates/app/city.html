@@ -1,0 +1,147 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>City</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{cityForm.name.label}}</label>
+                  <div class="col-lg-7">
+                    {{cityForm.name}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{cityForm.zipCode.label}}</label>
+                  <div class="col-lg-7">
+                    {{cityForm.zipCode}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{cityForm.state.label}}</label>
+                  <div class="col-lg-7">
+                    {{cityForm.state}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_city' city_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="enterprise">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-enterprise" aria-expanded="true" aria-controls="collapse-enterprise">
+          enterprise list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-enterprise" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="enterprise">
+      <div class="panel-body">      
+        <ul>
+        {% for enterprise  in enterprises %}
+            {% if enterprise.name == null %}
+            <li> <a href="{% url 'enterprise' enterprise.id %}" > {{enterprise}} enterprise.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'enterprise' enterprise.id %}" > {{enterprise.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="department">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-department" aria-expanded="true" aria-controls="collapse-department">
+          department list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-department" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="department">
+      <div class="panel-body">      
+        <ul>
+        {% for department  in departments %}
+            {% if department.name == null %}
+            <li> <a href="{% url 'department' department.id %}" > {{department}} department.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'department' department.id %}" > {{department.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="vendor">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-vendor" aria-expanded="true" aria-controls="collapse-vendor">
+          vendor list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-vendor" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="vendor">
+      <div class="panel-body">      
+        <ul>
+        {% for vendor  in vendors %}
+            {% if vendor.name == null %}
+            <li> <a href="{% url 'vendor' vendor.id %}" > {{vendor}} vendor.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'vendor' vendor.id %}" > {{vendor.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="order">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-order" aria-expanded="true" aria-controls="collapse-order">
+          order list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="order">
+      <div class="panel-body">      
+        <ul>
+        {% for order  in orders %}
+            {% if order.name == null %}
+            <li> <a href="{% url 'order' order.id %}" > {{order}} order.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'order' order.id %}" > {{order.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="customer">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-customer" aria-expanded="true" aria-controls="collapse-customer">
+          customer list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-customer" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="customer">
+      <div class="panel-body">      
+        <ul>
+        {% for customer  in customers %}
+            {% if customer.name == null %}
+            <li> <a href="{% url 'customer' customer.id %}" > {{customer}} customer.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'customer' customer.id %}" > {{customer.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

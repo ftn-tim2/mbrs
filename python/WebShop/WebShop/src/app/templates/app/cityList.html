@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for city  in citys %}
+                       <li class="list-unstyled">
+                       {% if city.name == null %}
+                       <a href="{% url 'city' city.id %}" class="col-lg-8" > City {{city.id}}</a>
+                       {% else %}
+                       <a href="{% url 'city' city.id %}" class="col-lg-8"> {{city.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_city' city.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

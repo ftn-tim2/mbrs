@@ -1,0 +1,67 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Customer</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{customerForm.name.label}}</label>
+                  <div class="col-lg-7">
+                    {{customerForm.name}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{customerForm.address.label}}</label>
+                  <div class="col-lg-7">
+                    {{customerForm.address}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{customerForm.city.label}}</label>
+                  <div class="col-lg-7">
+                    {{customerForm.city}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_customer' customer_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="order">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-order" aria-expanded="true" aria-controls="collapse-order">
+          order list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="order">
+      <div class="panel-body">      
+        <ul>
+        {% for order  in orders %}
+            {% if order.name == null %}
+            <li> <a href="{% url 'order' order.id %}" > {{order}} order.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'order' order.id %}" > {{order.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

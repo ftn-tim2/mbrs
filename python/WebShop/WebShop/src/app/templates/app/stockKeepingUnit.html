@@ -1,0 +1,67 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>StockKeepingUnit</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{stockKeepingUnitForm.available.label}}</label>
+                  <div class="col-lg-7">
+                    {{stockKeepingUnitForm.available}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{stockKeepingUnitForm.reserved.label}}</label>
+                  <div class="col-lg-7">
+                    {{stockKeepingUnitForm.reserved}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{stockKeepingUnitForm.stock.label}}</label>
+                  <div class="col-lg-7">
+                    {{stockKeepingUnitForm.stock}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_stockKeepingUnit' stockKeepingUnit_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="product">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-product" aria-expanded="true" aria-controls="collapse-product">
+          product list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-product" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="product">
+      <div class="panel-body">      
+        <ul>
+        {% for product  in products %}
+            {% if product.name == null %}
+            <li> <a href="{% url 'product' product.id %}" > {{product}} product.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'product' product.id %}" > {{product.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}
