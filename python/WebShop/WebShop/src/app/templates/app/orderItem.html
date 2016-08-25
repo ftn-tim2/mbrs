@@ -1,0 +1,63 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>OrderItem</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{orderItemForm.value.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.value}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderItemForm.orderedQuantity.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.orderedQuantity}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderItemForm.available.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.available}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderItemForm.unitPrice.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.unitPrice}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderItemForm.unitTax.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.unitTax}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderItemForm.order.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.order}}
+                  </div>  
+                  <label class="col-lg-3 control-label">{{orderItemForm.product.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderItemForm.product}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_orderItem' orderItem_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+  </div>  
+</div>
+
+{% endblock %}

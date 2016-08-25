@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for stock  in stocks %}
+                       <li class="list-unstyled">
+                       {% if stock.name == null %}
+                       <a href="{% url 'stock' stock.id %}" class="col-lg-8" > Stock {{stock.id}}</a>
+                       {% else %}
+                       <a href="{% url 'stock' stock.id %}" class="col-lg-8"> {{stock.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_stock' stock.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

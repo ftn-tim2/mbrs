@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for priceList  in priceLists %}
+                       <li class="list-unstyled">
+                       {% if priceList.name == null %}
+                       <a href="{% url 'priceList' priceList.id %}" class="col-lg-8" > PriceList {{priceList.id}}</a>
+                       {% else %}
+                       <a href="{% url 'priceList' priceList.id %}" class="col-lg-8"> {{priceList.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_priceList' priceList.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

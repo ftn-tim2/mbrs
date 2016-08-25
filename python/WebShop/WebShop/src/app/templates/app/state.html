@@ -1,0 +1,59 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>State</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{stateForm.name.label}}</label>
+                  <div class="col-lg-7">
+                    {{stateForm.name}}
+                  </div>        
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_state' state_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="city">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-city" aria-expanded="true" aria-controls="collapse-city">
+          city list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-city" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="city">
+      <div class="panel-body">      
+        <ul>
+        {% for city  in citys %}
+            {% if city.name == null %}
+            <li> <a href="{% url 'city' city.id %}" > {{city}} city.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'city' city.id %}" > {{city.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

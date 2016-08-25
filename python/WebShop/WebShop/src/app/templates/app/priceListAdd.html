@@ -1,0 +1,33 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+			<form class="form-horizontal" action="" method="POST">
+			{% csrf_token%}
+			  <fieldset>
+			    <legend>PriceList</legend>
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{priceListForm.listNumber.label}}</label>
+			      <div class="col-lg-10">
+			        {{priceListForm.listNumber}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{priceListForm.activeFromDate.label}}</label>
+			      <div class="col-lg-10">
+			        {{priceListForm.activeFromDate}}
+			      </div>        
+				</div>
+			    <div class="form-group">
+			      <div class="col-lg-10 col-lg-offset-2">
+			        <button type="reset" class="btn btn-default">Cancel</button>
+			        <button type="submit" class="btn btn-primary">Submit</button>
+			      </div>
+			    </div>
+			  </fieldset>
+			</form>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}

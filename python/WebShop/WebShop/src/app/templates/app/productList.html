@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for product  in products %}
+                       <li class="list-unstyled">
+                       {% if product.name == null %}
+                       <a href="{% url 'product' product.id %}" class="col-lg-8" > Product {{product.id}}</a>
+                       {% else %}
+                       <a href="{% url 'product' product.id %}" class="col-lg-8"> {{product.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_product' product.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

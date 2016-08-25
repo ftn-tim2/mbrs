@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for enterprise  in enterprises %}
+                       <li class="list-unstyled">
+                       {% if enterprise.name == null %}
+                       <a href="{% url 'enterprise' enterprise.id %}" class="col-lg-8" > Enterprise {{enterprise.id}}</a>
+                       {% else %}
+                       <a href="{% url 'enterprise' enterprise.id %}" class="col-lg-8"> {{enterprise.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_enterprise' enterprise.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

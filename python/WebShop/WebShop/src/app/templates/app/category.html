@@ -1,0 +1,87 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Category</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{categoryForm.cactegoryName.label}}</label>
+                  <div class="col-lg-7">
+                    {{categoryForm.cactegoryName}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{categoryForm.description.label}}</label>
+                  <div class="col-lg-7">
+                    {{categoryForm.description}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{categoryForm.subcategory.label}}</label>
+                  <div class="col-lg-7">
+                    {{categoryForm.subcategory}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_category' category_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="product">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-product" aria-expanded="true" aria-controls="collapse-product">
+          product list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-product" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="product">
+      <div class="panel-body">      
+        <ul>
+        {% for product  in products %}
+            {% if product.name == null %}
+            <li> <a href="{% url 'product' product.id %}" > {{product}} product.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'product' product.id %}" > {{product.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="category">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-category" aria-expanded="true" aria-controls="collapse-category">
+          category list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-category" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="category">
+      <div class="panel-body">      
+        <ul>
+        {% for category  in categorys %}
+            {% if category.name == null %}
+            <li> <a href="{% url 'category' category.id %}" > {{category}} category.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'category' category.id %}" > {{category.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}

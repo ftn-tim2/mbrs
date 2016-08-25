@@ -1,0 +1,32 @@
+{% extends 'app/custom.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for order  in orders %}
+                       <li class="list-unstyled">
+                       {% if order.name == null %}
+                       <a href="{% url 'order' order.id %}" class="col-lg-8" > Order {{order.id}}</a>
+                       {% else %}
+                       <a href="{% url 'order' order.id %}" class="col-lg-8"> {{order.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_order' order.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

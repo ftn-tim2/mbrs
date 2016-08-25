@@ -1,0 +1,32 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+              <fieldset>
+                <div class="form-group">
+                <ul>
+                    {% for invoice  in invoices %}
+                       <li class="list-unstyled">
+                       {% if invoice.name == null %}
+                       <a href="{% url 'invoice' invoice.id %}" class="col-lg-8" > Invoice {{invoice.id}}</a>
+                       {% else %}
+                       <a href="{% url 'invoice' invoice.id %}" class="col-lg-8"> {{invoice.name}}</a> 
+                       {% endif %}
+                         {% if deletable == "true" %}
+                         <form action="{% url 'delete_invoice' invoice.id %}" method="POST">
+                         {% csrf_token %}
+                          <input type="submit" class="col-lg-4" value="Delete" />
+                         </form>
+                         {% endif %}
+                       </li>
+                    {% endfor %}  
+                </ul>      
+                </div>
+              </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

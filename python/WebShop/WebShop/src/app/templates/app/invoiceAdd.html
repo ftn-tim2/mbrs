@@ -1,0 +1,45 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+			<form class="form-horizontal" action="" method="POST">
+			{% csrf_token%}
+			  <fieldset>
+			    <legend>Invoice</legend>
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{invoiceForm.invoiceDate.label}}</label>
+			      <div class="col-lg-10">
+			        {{invoiceForm.invoiceDate}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{invoiceForm.invoiceTotal.label}}</label>
+			      <div class="col-lg-10">
+			        {{invoiceForm.invoiceTotal}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{invoiceForm.invoiceNumber.label}}</label>
+			      <div class="col-lg-10">
+			        {{invoiceForm.invoiceNumber}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{invoiceForm.canceled.label}}</label>
+			      <div class="col-lg-10">
+			        {{invoiceForm.canceled}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{invoiceForm.order.label}}</label>
+			      <div class="col-lg-10">
+			        {{invoiceForm.order}}
+			      </div>            
+				</div>
+			    <div class="form-group">
+			      <div class="col-lg-10 col-lg-offset-2">
+			        <button type="reset" class="btn btn-default">Cancel</button>
+			        <button type="submit" class="btn btn-primary">Submit</button>
+			      </div>
+			    </div>
+			  </fieldset>
+			</form>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}

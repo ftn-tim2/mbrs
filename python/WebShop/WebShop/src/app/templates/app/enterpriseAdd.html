@@ -1,0 +1,37 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+			<form class="form-horizontal" action="" method="POST">
+			{% csrf_token%}
+			  <fieldset>
+			    <legend>Enterprise</legend>
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{enterpriseForm.name.label}}</label>
+			      <div class="col-lg-10">
+			        {{enterpriseForm.name}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{enterpriseForm.address.label}}</label>
+			      <div class="col-lg-10">
+			        {{enterpriseForm.address}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{enterpriseForm.city.label}}</label>
+			      <div class="col-lg-10">
+			        {{enterpriseForm.city}}
+			      </div>            
+				</div>
+			    <div class="form-group">
+			      <div class="col-lg-10 col-lg-offset-2">
+			        <button type="reset" class="btn btn-default">Cancel</button>
+			        <button type="submit" class="btn btn-primary">Submit</button>
+			      </div>
+			    </div>
+			  </fieldset>
+			</form>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}

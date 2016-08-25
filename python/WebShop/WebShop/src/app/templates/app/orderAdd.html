@@ -1,0 +1,53 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+			<form class="form-horizontal" action="" method="POST">
+			{% csrf_token%}
+			  <fieldset>
+			    <legend>Order</legend>
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.orderDate.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.orderDate}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.orderTotal.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.orderTotal}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.orderStatus.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.orderStatus}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.orderNumber.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.orderNumber}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.shipmentAddress.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.shipmentAddress}}
+			      </div>        
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.city.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.city}}
+			      </div>            
+			      <label for="inputEmail" class="col-lg-2 control-label">{{orderForm.customer.label}}</label>
+			      <div class="col-lg-10">
+			        {{orderForm.customer}}
+			      </div>            
+				</div>
+			    <div class="form-group">
+			      <div class="col-lg-10 col-lg-offset-2">
+			        <button type="reset" class="btn btn-default">Cancel</button>
+			        <button type="submit" class="btn btn-primary">Submit</button>
+			      </div>
+			    </div>
+			  </fieldset>
+			</form>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}

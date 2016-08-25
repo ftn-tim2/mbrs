@@ -1,0 +1,123 @@
+{% extends 'app/main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">     
+            <form class="form-horizontal">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Order</legend>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">{{orderForm.orderDate.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.orderDate}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderForm.orderTotal.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.orderTotal}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderForm.orderStatus.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.orderStatus}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderForm.orderNumber.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.orderNumber}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderForm.shipmentAddress.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.shipmentAddress}}
+                  </div>        
+                  <label class="col-lg-3 control-label">{{orderForm.city.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.city}}
+                  </div>  
+                  <label class="col-lg-3 control-label">{{orderForm.customer.label}}</label>
+                  <div class="col-lg-7">
+                    {{orderForm.customer}}
+                  </div>  
+              </fieldset>
+            </form>  
+            {% if editable == "true" %}
+            <form action="{% url 'modify_order' order_id %}" method="POST">
+                 {% csrf_token %}
+                  <input type="submit" class="btn btn-default" value="Edit" />
+           </form>
+           {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block lists %}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="orderItem">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-orderItem" aria-expanded="true" aria-controls="collapse-orderItem">
+          orderItem list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-orderItem" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="orderItem">
+      <div class="panel-body">      
+        <ul>
+        {% for orderItem  in orderItems %}
+            {% if orderItem.name == null %}
+            <li> <a href="{% url 'orderItem' orderItem.id %}" > {{orderItem}} orderItem.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'orderItem' orderItem.id %}" > {{orderItem.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="payment">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-payment" aria-expanded="true" aria-controls="collapse-payment">
+          payment list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-payment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="payment">
+      <div class="panel-body">      
+        <ul>
+        {% for payment  in payments %}
+            {% if payment.name == null %}
+            <li> <a href="{% url 'payment' payment.id %}" > {{payment}} payment.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'payment' payment.id %}" > {{payment.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="panel-heading" role="tab" id="invoice">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-invoice" aria-expanded="true" aria-controls="collapse-invoice">
+          invoice list:
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-invoice" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="invoice">
+      <div class="panel-body">      
+        <ul>
+        {% for invoice  in invoices %}
+            {% if invoice.name == null %}
+            <li> <a href="{% url 'invoice' invoice.id %}" > {{invoice}} invoice.id </a> </li> 
+            {% else %}
+            <li> <a href="{% url 'invoice' invoice.id %}" > {{invoice.name}}</a> </li> 
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+
+{% endblock %}
