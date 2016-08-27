@@ -51,6 +51,7 @@ public class ModelAnalyzer {
 
     public void prepareModel() throws AnalyzeException {
         processPackage(_root, _filePackage);
+        postProcessPackage();
     }
 
     private void processPackage(Package pack, String packageOwner) throws AnalyzeException {
@@ -127,6 +128,28 @@ public class ModelAnalyzer {
                 }
 
                 throw new AnalyzeException("Unidentified type detected: " + ownedElement.getClass());
+            }
+        }
+    }
+
+    private void postProcessPackage() throws AnalyzeException {
+        // search for the proper enumeration for the DropDown UIProperty
+        for (FMClass fmClassclass : _model.getClasses()) {
+            for (FMProperty fmProperty : fmClassclass.getProperties()) {
+                if (fmProperty.getClass() == UIProperty.class) {
+                    UIProperty tempProp = (UIProperty) fmProperty;
+                    if (tempProp.isDropDownFlag()) {
+                        for (FMEnumeration fmEnumeration : _model.getEnumerations()) {
+                            if (fmEnumeration.getName().equals(tempProp.getType())) {
+                                tempProp.setEnumerations(fmEnumeration);
+                            }
+                        }
+                        if (tempProp.getEnumeration() == null) {
+                            //throw new AnalyzeException("Unidentified enumeration detected: " + tempProp.getName());
+                        }
+                    }
+
+                }
             }
         }
     }

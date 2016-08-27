@@ -1,5 +1,6 @@
 package myplugin.generator.fmmodel.strereotypes;
 
+import myplugin.generator.fmmodel.FMEnumeration;
 import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.fmmodel.strereotypes.interfaces.IUIElement;
 
@@ -26,6 +27,8 @@ public class UIProperty extends FMProperty implements IUIElement {
     private Integer max_digits;
     private String defaultValue;
     private List<String> propertiesKeyValue;
+    private FMEnumeration enumeration;
+    private boolean dropDownFlag = false;
 
     public UIProperty() {
         super();
@@ -63,15 +66,41 @@ public class UIProperty extends FMProperty implements IUIElement {
             addValueToPropertiesKeyValue("null = ", nullable);
             addValueToPropertiesKeyValue("max_digits = ", max_digits);
             addValueToPropertiesKeyValue("default = ", defaultValue);
-
+            if (enumeration != null)
+                addValueToPropertiesKeyValue("choices = ", convertEnumerationToStrings(this.enumeration));
         }
         return propertiesKeyValue.iterator();
 
     }
 
+    private String convertEnumerationToStrings(FMEnumeration enumeration) {
+        StringBuilder sb = new StringBuilder();
+        if (enumeration.getValuesCount() > 0) {
+            sb.append("(");
+            for (int i = 0; i < enumeration.getValuesCount(); i++) {
+                sb.append("(" + enumeration.getValueAt(i).toUpperCase() + ",'" + enumeration.getValueAt(i) + "')");
+                //don't put , at the end
+                if (i + 1 < enumeration.getValuesCount())
+                    sb.append(",");
+            }
+            sb.append(")");
+
+            return sb.toString();
+        }
+        return null;
+    }
+
     private void addValueToPropertiesKeyValue(String s, Object o) {
         if (o != null)
             propertiesKeyValue.add(s + o);
+    }
+
+    public FMEnumeration getEnumeration() {
+        return enumeration;
+    }
+
+    public void setEnumerations(FMEnumeration enumeration) {
+        this.enumeration = enumeration;
     }
 
     public String getLabel() {
@@ -115,11 +144,37 @@ public class UIProperty extends FMProperty implements IUIElement {
         // "duration" | "email" | "file" | "filePath" | "float" | "image" | "int" | "nullBoolean" | "positiveInteger" |
         // "positiveSmallInteger" | "slug" | "smallInteger" | "text" | "time" | "URL" | "UUID" | "foreignKey"|
         // "manyToMany" | "oneToOne"
-        switch (component)
-        {
-            case "": this.component = "";break;
+        switch (component) {
+            case "textField":
+                this.component = "char";
+                break;
+            case "textArea":
+                this.component = "text";
+                break;
+            case "checkbox":
+                this.component = "boolean";
+                break;
+            case "datePicker":
+                this.component = "dateTime";
+                break;
+            case "floatField":
+                this.component = "float";
+                break;
+            case "integerField":
+                this.component = "int";
+                break;
+            case "imageField":
+                this.component = "image";
+                break;
+            case "dropdown":
+                this.component = "char";
+                dropDownFlag = true;
+                break;
         }
-        this.component = component;
+    }
+
+    public boolean isDropDownFlag() {
+        return dropDownFlag;
     }
 
     public Boolean getNullable() {
