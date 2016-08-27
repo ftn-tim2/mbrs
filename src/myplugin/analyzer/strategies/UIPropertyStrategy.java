@@ -8,7 +8,6 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 import myplugin.analyzer.AnalyzeException;
 import myplugin.generator.fmmodel.FMProperty;
-import myplugin.generator.fmmodel.strereotypes.ComponentType;
 import myplugin.generator.fmmodel.strereotypes.UIProperty;
 
 import java.util.List;
@@ -49,27 +48,23 @@ public class UIPropertyStrategy implements IParsingStrategy<UIProperty> {
         Stereotype uiPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property, UIProperty.NAME);
 
         //"max_length", "editable", "component", "nullable", "decimal_places", "max_digits", "defaultValue"
-        Object valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "max_length");
-        uiProperty.setMax_length((Integer) valueFromStereotype);
+        uiProperty.setMax_length((Integer) extractValueFromStereotype(property, uiPropertyStereotype, "max_length"));
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "editable");
-        uiProperty.setEditable((Boolean) valueFromStereotype);
+        uiProperty.setEditable((Boolean) extractValueFromStereotype(property, uiPropertyStereotype, "editable"));
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "component");
-        if (valueFromStereotype!=null)
-            uiProperty.setComponent(ComponentType.getComponentNumberByName(((EnumerationLiteral) valueFromStereotype).getName()));
+        Object valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "component");
+        if (valueFromStereotype!=null) {
+            String name = ((EnumerationLiteral) valueFromStereotype).getName();
+            uiProperty.setComponent(name);
+        }
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "nullable");
-        uiProperty.setNullable((Boolean) valueFromStereotype);
+        uiProperty.setNullable((Boolean) extractValueFromStereotype(property, uiPropertyStereotype, "nullable"));
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "decimal_places");
-        uiProperty.setDecimal_places((Integer) valueFromStereotype);
+        uiProperty.setDecimal_places((Integer) extractValueFromStereotype(property, uiPropertyStereotype, "decimal_places"));
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "max_digits");
-        uiProperty.setMax_digits((Integer) valueFromStereotype);
+        uiProperty.setMax_digits((Integer) extractValueFromStereotype(property, uiPropertyStereotype, "max_digits"));
 
-        valueFromStereotype = extractValueFromStereotype(property, uiPropertyStereotype, "defaultValue");
-        uiProperty.setDefaultValue((String) valueFromStereotype);
+        uiProperty.setDefaultValue((String) extractValueFromStereotype(property, uiPropertyStereotype, "defaultValue"));
 
         return uiProperty;
     }

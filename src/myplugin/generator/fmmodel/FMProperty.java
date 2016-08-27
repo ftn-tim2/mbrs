@@ -15,6 +15,9 @@ public class FMProperty extends FMElement  {
 	 * Also, provide these meta-attributes or tags in the modeling languange metaclass or 
 	 * stereotype */
 
+	public FMProperty(){
+		super();
+	}
 	
 	public FMProperty(String name, String type, String visibility, int lower, int upper) {
 		super(name);

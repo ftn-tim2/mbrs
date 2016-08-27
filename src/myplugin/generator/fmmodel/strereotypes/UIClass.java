@@ -9,7 +9,11 @@ import myplugin.generator.fmmodel.strereotypes.interfaces.IUIElement;
 public abstract class UIClass extends FMClass implements IUIElement{
 	
 	private UIElement uiElement;
-	
+
+	public UIClass(){
+		super();
+	}
+
 	public UIClass(String name, String classPackage, String visibility) {
 		super(name, classPackage, visibility);
 		uiElement = new UIElement();

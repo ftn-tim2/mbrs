@@ -2,6 +2,9 @@ package myplugin.generator;
 
 import freemarker.template.TemplateException;
 import myplugin.generator.fmmodel.FMModel;
+import myplugin.generator.fmmodel.FMProperty;
+import myplugin.generator.fmmodel.strereotypes.Next;
+import myplugin.generator.fmmodel.strereotypes.UIProperty;
 import myplugin.generator.options.GeneratorOptions;
 
 import javax.swing.*;
@@ -39,6 +42,10 @@ public class EJBGenerator extends BasicGenerator {
             if (out != null) {
                 context.clear();
                 context.put("model", model);
+                context.put("UIProperty", UIProperty.class);
+                context.put("Next", Next.class);
+                context.put("FMProperty", FMProperty.class);
+                context.put("instanceOf", new InstanceOfMethod());
                 getTemplate().process(context, out);
                 out.flush();
             }

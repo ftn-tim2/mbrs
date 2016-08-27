@@ -3,7 +3,11 @@ package myplugin.generator.fmmodel;
 /** Element - abstract ancestor for all model elements */
 
 public abstract class FMElement {
-	
+
+	public FMElement(){
+
+	}
+
 	private String name;
 	
 	public FMElement(String name) {

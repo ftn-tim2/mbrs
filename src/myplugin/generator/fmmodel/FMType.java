@@ -6,6 +6,10 @@ public class FMType extends FMElement {
 		return typePackage;
 	}
 
+	public FMType(){
+		super();
+	}
+
 	public FMType(String name, String typePackage) {
 		super(name);
 		this.typePackage = typePackage;

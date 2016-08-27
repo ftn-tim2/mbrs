@@ -60,8 +60,8 @@ class GenerateAction extends MDAction {
                 try {
                     out = new BufferedWriter(new OutputStreamWriter(
                             new FileOutputStream(fileName), "UTF8"));
-                    xstream.toXML(fmModel.getClasses(), out);
-                    xstream.toXML(fmModel.getEnumerations(), out);
+                    xstream.toXML(fmModel, out);
+                    // xstream.toXML(fmModel.getEnumerations(), out);
                     JOptionPane.showMessageDialog(null, "Metadata successfully extracted!");
 
                 } catch (UnsupportedEncodingException e) {

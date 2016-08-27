@@ -11,7 +11,11 @@ public class StandardPage extends UIClass {
 	private boolean delete;
 	private boolean update;
 	private boolean read;
-	
+
+	public StandardPage(){
+		super();
+	}
+
 	public StandardPage(String name, String classPackage, String visibility) {
 		super(name, classPackage, visibility);
 		this.create = true;

@@ -12,6 +12,10 @@ public class Next extends UIAssocEnd {
 		return "Next : "  + super.getLabel() ;
 	}
 
+	public Next(){
+		super();
+	}
+
 	public Next(String name, String type, String visibility, int lower, int upper) {
 		super(name, type, visibility, lower, upper);
 	}

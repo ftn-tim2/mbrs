@@ -17,7 +17,10 @@ public class FMClass extends FMType {
 	private List<String> importedPackages = new ArrayList<>();
 	
 	/** @ToDo: add list of methods */
-	
+
+	public FMClass(){
+		super();
+	}
 	
 	public FMClass(String name, String classPackage, String visibility) {
 		super(name, classPackage);		

@@ -1,5 +1,7 @@
 package testTemplates;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import myplugin.generator.EJBGenerator;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMModel;
@@ -7,6 +9,8 @@ import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.options.ProjectOptions;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.List;
 
 /**
@@ -68,8 +72,26 @@ public class TestPackageGeneration {
         classes.add(cl);
     }
 
+    public FMModel importFromXml(String absolutePath) {
+
+        FileReader fileReader = null;  // load our xml file
+        try {
+            fileReader = new FileReader(absolutePath);
+
+            XStream xstream = new XStream(new DomDriver());     // init XStream
+            // define root alias so XStream knows which element and which class are equivalent
+            xstream.alias("myplugin.generator.fmmodel.FMModel", FMModel.class);
+            FMModel loadedModel = (FMModel) xstream.fromXML(fileReader);
+            return loadedModel;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void testGenerator() {
-        initModel();
+        //initModel();
+        fmModel = importFromXml("C:\\Users\\Jozef\\Documents\\GitHub\\mbrs\\src-test\\MagicDrawModelExport.xml");
         GeneratorOptions go = ProjectOptions.getProjectOptions().getGeneratorOptions().get("EJBGenerator");
         EJBGenerator g = new EJBGenerator(go);
         g.generate(fmModel);

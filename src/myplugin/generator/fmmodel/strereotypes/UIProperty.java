@@ -17,11 +17,14 @@ public class UIProperty extends FMProperty implements IUIElement {
     private Integer max_length;
     private Boolean editable;
     private Integer decimal_places;
-    private ComponentType component;
+    private String component;
     private Boolean nullable;
     private Integer max_digits;
     private String defaultValue;
 
+    public UIProperty(){
+        super();
+    }
 
     public UIProperty(String name, String type, String visibility, int lower, int upper) {
         super(name, type, visibility, lower, upper);
@@ -34,7 +37,7 @@ public class UIProperty extends FMProperty implements IUIElement {
     }
 
     public UIProperty(FMProperty fmProperty, Integer max_length, Boolean editable, Integer decimal_places,
-                      ComponentType component, Boolean nullable, Integer max_digits, String defaultValue) {
+                      String component, Boolean nullable, Integer max_digits, String defaultValue) {
         super(fmProperty.getName(), fmProperty.getType(), fmProperty.getVisibility(), fmProperty.getLower(), fmProperty.getUpper());
         this.max_length = max_length;
         this.editable = editable;
@@ -78,11 +81,11 @@ public class UIProperty extends FMProperty implements IUIElement {
         this.decimal_places = decimal_places;
     }
 
-    public ComponentType getComponent() {
+    public String getComponent() {
         return component;
     }
 
-    public void setComponent(ComponentType component) {
+    public void setComponent(String component) {
         this.component = component;
     }
 

@@ -7,12 +7,16 @@ import myplugin.generator.fmmodel.FMProperty;
  */
 public class UIAssocEnd extends UIProperty{
 
+	public UIAssocEnd(){
+		super();
+	}
+
 	public UIAssocEnd(String name, String type, String visibility, int lower, int upper) {
 		super(name, type, visibility, lower, upper);
 		uiElement = new UIElement();
 	}
 	
-	public UIAssocEnd(FMProperty fmProperty, Integer length, Integer precision, ComponentType componentType, Boolean nullable){
+	public UIAssocEnd(FMProperty fmProperty, Integer length, Integer precision, Boolean nullable){
 		super(fmProperty.getName(), fmProperty.getType(), fmProperty.getVisibility(), fmProperty.getLower(), fmProperty.getUpper());
 		uiElement = new UIElement();
 	}

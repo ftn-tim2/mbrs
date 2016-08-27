@@ -1,18 +1,16 @@
 package myplugin.analyzer.strategies;
 
-import java.util.List;
-
-import myplugin.analyzer.AnalyzeException;
-import myplugin.generator.fmmodel.FMProperty;
-import myplugin.generator.fmmodel.strereotypes.ComponentType;
-import myplugin.generator.fmmodel.strereotypes.Next;
-
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.EnumerationLiteral;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
+import myplugin.analyzer.AnalyzeException;
+import myplugin.generator.fmmodel.FMProperty;
+import myplugin.generator.fmmodel.strereotypes.Next;
+
+import java.util.List;
 
 public class NextStrategy implements IParsingStrategy<Next> {
 
@@ -62,7 +60,8 @@ public class NextStrategy implements IParsingStrategy<Next> {
 
 		List componentTypeList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "component");
 		if(componentTypeList.size() == 1){
-			next.setComponent(ComponentType.getComponentNumberByName(((EnumerationLiteral)componentTypeList.get(0)).getName()));
+			String name = ((EnumerationLiteral)componentTypeList.get(0)).getName();
+			next.setComponent(name);
 		}
 
 		List nullableList = StereotypesHelper.getStereotypePropertyValue(property, nextStereotype, "nullable");
