@@ -5,7 +5,12 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 <#list class.properties as property>
   <#if instanceOf(property,Next)>${property.type} "${property.name}"<#rt>
   <#elseif instanceOf(property,FMProperty)>${property.type} "${property.name}"<#rt>
-  <#elseif instanceOf(property,UIProperty)>${property.component} "${property.name}"</#if>
+  <#elseif instanceOf(property,UIProperty)>${property.component} "${property.name}" <#rt>
+    (<#list property.propertiesKeyValue as keyValue> <#t>
+         ${keyValue}  <#t>
+    </#list> ) <#t>
+  </#if>
+
 </#list>
 }
 

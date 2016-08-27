@@ -3,6 +3,10 @@ package myplugin.generator.fmmodel.strereotypes;
 import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.fmmodel.strereotypes.interfaces.IUIElement;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by Jozef on 8/20/2016.
  */
@@ -21,6 +25,7 @@ public class UIProperty extends FMProperty implements IUIElement {
     private Boolean nullable;
     private Integer max_digits;
     private String defaultValue;
+    private List<String> propertiesKeyValue;
 
     public UIProperty(){
         super();
@@ -47,6 +52,20 @@ public class UIProperty extends FMProperty implements IUIElement {
         this.max_digits = max_digits;
         this.defaultValue = defaultValue;
         uiElement = new UIElement();
+    }
+
+    public Iterator<String> getPropertiesKeyValue()
+    {
+        if (propertiesKeyValue == null)
+        {
+            propertiesKeyValue = new ArrayList<>();
+            if (max_length!=null)
+                propertiesKeyValue.add("max_length = "+ max_length);
+            if (editable!=null)
+                propertiesKeyValue.add("editable = "+ editable);
+        }
+        return propertiesKeyValue.iterator();
+
     }
 
     public String getLabel() {
