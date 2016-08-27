@@ -91,7 +91,7 @@ public class TestPackageGeneration {
 
     public void testGenerator() {
         //initModel();
-        fmModel = importFromXml("C:\\Users\\Jozef\\Documents\\GitHub\\mbrs\\src-test\\MagicDrawModelExport.xml");
+        fmModel = importFromXml(getClass().getClassLoader().getResource("MagicDrawModelExport.xml").getFile());
         GeneratorOptions go = ProjectOptions.getProjectOptions().getGeneratorOptions().get("EJBGenerator");
         EJBGenerator g = new EJBGenerator(go);
         g.generate(fmModel);
