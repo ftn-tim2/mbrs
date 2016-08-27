@@ -27,7 +27,7 @@ public class UIProperty extends FMProperty implements IUIElement {
     private String defaultValue;
     private List<String> propertiesKeyValue;
 
-    public UIProperty(){
+    public UIProperty() {
         super();
     }
 
@@ -47,25 +47,31 @@ public class UIProperty extends FMProperty implements IUIElement {
         this.max_length = max_length;
         this.editable = editable;
         this.decimal_places = decimal_places;
-        this.component = component;
+        setComponent(component);
         this.nullable = nullable;
         this.max_digits = max_digits;
         this.defaultValue = defaultValue;
         uiElement = new UIElement();
     }
 
-    public Iterator<String> getPropertiesKeyValue()
-    {
-        if (propertiesKeyValue == null)
-        {
+    public Iterator<String> getPropertiesKeyValue() {
+        if (propertiesKeyValue == null) {
             propertiesKeyValue = new ArrayList<>();
-            if (max_length!=null)
-                propertiesKeyValue.add("max_length = "+ max_length);
-            if (editable!=null)
-                propertiesKeyValue.add("editable = "+ editable);
+            addValueToPropertiesKeyValue("max_length = ", max_length);
+            addValueToPropertiesKeyValue("editable = ", editable);
+            addValueToPropertiesKeyValue("decimal_places = ", decimal_places);
+            addValueToPropertiesKeyValue("null = ", nullable);
+            addValueToPropertiesKeyValue("max_digits = ", max_digits);
+            addValueToPropertiesKeyValue("default = ", defaultValue);
+
         }
         return propertiesKeyValue.iterator();
 
+    }
+
+    private void addValueToPropertiesKeyValue(String s, Object o) {
+        if (o != null)
+            propertiesKeyValue.add(s + o);
     }
 
     public String getLabel() {
@@ -105,6 +111,14 @@ public class UIProperty extends FMProperty implements IUIElement {
     }
 
     public void setComponent(String component) {
+        //"bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger" | "Date" | "dateTime" | "decimal" |
+        // "duration" | "email" | "file" | "filePath" | "float" | "image" | "int" | "nullBoolean" | "positiveInteger" |
+        // "positiveSmallInteger" | "slug" | "smallInteger" | "text" | "time" | "URL" | "UUID" | "foreignKey"|
+        // "manyToMany" | "oneToOne"
+        switch (component)
+        {
+            case "": this.component = "";break;
+        }
         this.component = component;
     }
 
