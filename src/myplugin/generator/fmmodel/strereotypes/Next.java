@@ -31,7 +31,7 @@ public class Next extends UIAssocEnd {
     @Override
     public Iterator<String> getPropertiesKeyValue() {
         List result = IteratorUtils.toList(super.getPropertiesKeyValue());
-        result.add("To = " + "\"" + this.getType() + "\"");
+        result.add("to = " + "\"" + this.getType() + "\"");
         return result.iterator();
     }
 

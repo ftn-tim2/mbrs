@@ -16,7 +16,7 @@ public class UIProperty extends FMProperty implements IUIElement {
     public static String NAME = "UIProperty";
     //"max_length", "editable", "component", "nullable", "decimal_places", "max_digits", "defaultValue"
 
-    // label not used.. for now
+    // label not used.. for now - false, it will not be used ever..
     protected UIElement uiElement;
 
     private Integer max_length;
@@ -78,7 +78,7 @@ public class UIProperty extends FMProperty implements IUIElement {
         if (enumeration.getValuesCount() > 0) {
             sb.append("(");
             for (int i = 0; i < enumeration.getValuesCount(); i++) {
-                sb.append("(" + enumeration.getValueAt(i).toUpperCase() + ",'" + enumeration.getValueAt(i) + "')");
+                sb.append("(").append(enumeration.getValueAt(i).toUpperCase()).append(",'").append(enumeration.getValueAt(i)).append("')");
                 //don't put , at the end
                 if (i + 1 < enumeration.getValuesCount())
                     sb.append(",");
