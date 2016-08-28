@@ -74,7 +74,7 @@ public class TestPackageGeneration {
 
     public FMModel importFromXml(String absolutePath) {
 
-        FileReader fileReader = null;  // load our xml file
+        FileReader fileReader;  // load our xml file
         try {
             fileReader = new FileReader(absolutePath);
 

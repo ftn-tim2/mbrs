@@ -26,7 +26,7 @@ public class UIProperty extends FMProperty implements IUIElement {
     private Boolean nullable;
     private Integer max_digits;
     private String defaultValue;
-    private List<String> propertiesKeyValue;
+    protected List<String> propertiesKeyValue;
     private FMEnumeration enumeration;
     private boolean dropDownFlag = false;
 
