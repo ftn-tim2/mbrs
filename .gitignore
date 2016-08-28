@@ -142,3 +142,5 @@ var/
 .installed.cfg
 *.egg
 *.exe
+*.h
+mbrs/

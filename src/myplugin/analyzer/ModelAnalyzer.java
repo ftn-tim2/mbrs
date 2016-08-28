@@ -134,8 +134,8 @@ public class ModelAnalyzer {
 
     private void postProcessPackage() throws AnalyzeException {
         // search for the proper enumeration for the DropDown UIProperty
-        for (FMClass fmClassclass : _model.getClasses()) {
-            for (FMProperty fmProperty : fmClassclass.getProperties()) {
+        for (FMClass fmClass : _model.getClasses()) {
+            for (FMProperty fmProperty : fmClass.getProperties()) {
                 if (fmProperty.getClass() == UIProperty.class) {
                     UIProperty tempProp = (UIProperty) fmProperty;
                     if (tempProp.isDropDownFlag()) {
@@ -145,7 +145,7 @@ public class ModelAnalyzer {
                             }
                         }
                         if (tempProp.getEnumeration() == null) {
-                            //throw new AnalyzeException("Unidentified enumeration detected: " + tempProp.getName());
+                            throw new AnalyzeException("Unidentified enumeration detected: " + tempProp.getName());
                         }
                     }
 

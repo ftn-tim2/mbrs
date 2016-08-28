@@ -78,7 +78,7 @@ public class UIProperty extends FMProperty implements IUIElement {
         if (enumeration.getValuesCount() > 0) {
             sb.append("(");
             for (int i = 0; i < enumeration.getValuesCount(); i++) {
-                sb.append("(").append(enumeration.getValueAt(i).toUpperCase()).append(",'").append(enumeration.getValueAt(i)).append("')");
+                sb.append("(\"").append(enumeration.getValueAt(i).toUpperCase()).append("\",\"").append(enumeration.getValueAt(i)).append("\")");
                 //don't put , at the end
                 if (i + 1 < enumeration.getValuesCount())
                     sb.append(",");
@@ -158,7 +158,7 @@ public class UIProperty extends FMProperty implements IUIElement {
                 this.component = "dateTime";
                 break;
             case "floatField":
-                this.component = "float";
+                this.component = "decimal";
                 break;
             case "integerField":
                 this.component = "int";
