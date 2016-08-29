@@ -1,0 +1,159 @@
+
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<h3>Classes</h3>
+<table class="table">
+<tr>
+    {% if 'TODO_name.view_city' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/city_list">City</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_enterprise' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/enterprise_list">Enterprise</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_state' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/state_list">State</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_department' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/department_list">Department</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_vendor' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/vendor_list">Vendor</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_orderitem' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/orderitem_list">OrderItem</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_order' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/order_list">Order</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_pricelistitem' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/pricelistitem_list">PriceListItem</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_payment' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/payment_list">Payment</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_invoice' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/invoice_list">Invoice</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_customer' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/customer_list">Customer</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_pricelist' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/pricelist_list">PriceList</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_stock' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/stock_list">Stock</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_product' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/product_list">Product</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_category' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/category_list">Category</a>
+    </td>
+    {% endif %}
+</tr>
+<tr>
+    {% if 'TODO_name.view_stockkeepingunit' in user.get_all_permissions %}
+    <td>
+        <a href="/TODO_name/stockkeepingunit_list">StockKeepingUnit</a>
+    </td>
+    {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/reportorders">reportOrders</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/reportinvoices">reportInvoices</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/finish">finish</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/createinvoice">createInvoice</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/cancel">cancel</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/cancel">cancel</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/copy">copy</a> </td>
+	  {% endif %}
+</tr>
+
+{% endblock %}
+

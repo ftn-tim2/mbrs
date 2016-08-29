@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} City List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>City</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Enterprise</th>
+    <th>Name</th>
+    <th>Zipcode</th>
+    <th>Department</th>
+    <th>Vendor</th>
+    <th>Order</th>
+    <th>Customer</th>
+  {% if 'TODO_name.change_city' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_city' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for city in object_list %}
+   <tr>
+    <td>{{ city.enterprise }}</td>
+    <td>{{ city.name }}</td>
+    <td>{{ city.zipCode }}</td>
+    <td>{{ city.department }}</td>
+    <td>{{ city.vendor }}</td>
+    <td>{{ city.order }}</td>
+    <td>{{ city.customer }}</td>
+      {% if 'TODO_name.change_city' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:city_edit' city.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_city' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:city_delete' city.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_city' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:city_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

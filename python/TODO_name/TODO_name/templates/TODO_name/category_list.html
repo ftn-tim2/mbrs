@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} Category List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>Category</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Product</th>
+    <th>Category</th>
+    <th>Categoryname</th>
+    <th>Description</th>
+  {% if 'TODO_name.change_category' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_category' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for category in object_list %}
+   <tr>
+    <td>{{ category.product }}</td>
+    <td>{{ category.category }}</td>
+    <td>{{ category.categoryName }}</td>
+    <td>{{ category.description }}</td>
+      {% if 'TODO_name.change_category' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:category_edit' category.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_category' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:category_delete' category.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_category' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:category_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

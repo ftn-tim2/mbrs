@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} Vendor List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>Vendor</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Product</th>
+    <th>Name</th>
+    <th>Address</th>
+  {% if 'TODO_name.change_vendor' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_vendor' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for vendor in object_list %}
+   <tr>
+    <td>{{ vendor.product }}</td>
+    <td>{{ vendor.name }}</td>
+    <td>{{ vendor.address }}</td>
+      {% if 'TODO_name.change_vendor' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:vendor_edit' vendor.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_vendor' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:vendor_delete' vendor.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_vendor' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:vendor_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

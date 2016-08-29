@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} PriceList List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>PriceList</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Pricelistitem</th>
+    <th>Listnumber</th>
+    <th>Activefromdate</th>
+  {% if 'TODO_name.change_pricelist' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_pricelist' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for pricelist in object_list %}
+   <tr>
+    <td>{{ pricelist.priceListItem }}</td>
+    <td>{{ pricelist.listNumber }}</td>
+    <td>{{ pricelist.activeFromDate }}</td>
+      {% if 'TODO_name.change_pricelist' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:pricelist_edit' pricelist.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_pricelist' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:pricelist_delete' pricelist.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_pricelist' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:pricelist_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

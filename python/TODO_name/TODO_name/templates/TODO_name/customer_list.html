@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} Customer List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>Customer</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Order</th>
+  {% if 'TODO_name.change_customer' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_customer' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for customer in object_list %}
+   <tr>
+    <td>{{ customer.name }}</td>
+    <td>{{ customer.address }}</td>
+    <td>{{ customer.order }}</td>
+      {% if 'TODO_name.change_customer' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:customer_edit' customer.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_customer' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:customer_delete' customer.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_customer' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:customer_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} StockKeepingUnit List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>StockKeepingUnit</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Product</th>
+    <th>Available</th>
+    <th>Reserved</th>
+  {% if 'TODO_name.change_stockkeepingunit' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_stockkeepingunit' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for stockkeepingunit in object_list %}
+   <tr>
+    <td>{{ stockkeepingunit.product }}</td>
+    <td>{{ stockkeepingunit.available }}</td>
+    <td>{{ stockkeepingunit.reserved }}</td>
+      {% if 'TODO_name.change_stockkeepingunit' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:stockkeepingunit_edit' stockkeepingunit.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_stockkeepingunit' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:stockkeepingunit_delete' stockkeepingunit.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_stockkeepingunit' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:stockkeepingunit_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

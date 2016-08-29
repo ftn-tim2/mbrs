@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} Order List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>Order</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Orderitem</th>
+    <th>Payment</th>
+    <th>Invoice</th>
+    <th>Ordernumber</th>
+    <th>Orderdate</th>
+    <th>Shipmentaddress</th>
+    <th>Ordertotal</th>
+    <th>Orderstatus</th>
+  {% if 'TODO_name.change_order' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_order' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for order in object_list %}
+   <tr>
+    <td>{{ order.orderItem }}</td>
+    <td>{{ order.payment }}</td>
+    <td>{{ order.invoice }}</td>
+    <td>{{ order.orderNumber }}</td>
+    <td>{{ order.orderDate }}</td>
+    <td>{{ order.shipmentAddress }}</td>
+    <td>{{ order.orderTotal }}</td>
+    <td>{{ order.orderStatus }}</td>
+      {% if 'TODO_name.change_order' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:order_edit' order.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_order' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:order_delete' order.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_order' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:order_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block breadcrumb-page %} Payment List {% endblock breadcrumb-page %}
+
+{% block title %}
+<h1>Payment</h1>
+{% endblock %} {% block content %}
+<table class="table">
+    <tr>
+    <th>Paymetmethod</th>
+    <th>Datereceived</th>
+    <th>Amountreceived</th>
+    <th>Canceled</th>
+  {% if 'TODO_name.change_payment' in user.get_all_permissions %}
+    <th>Update</th>
+     {% endif %}
+    {% if 'TODO_name.delete_payment' in user.get_all_permissions %}
+    <th>Delete</th>
+     {% endif %}
+    </tr>
+
+    {% for payment in object_list %}
+   <tr>
+    <td>{{ payment.paymetMethod }}</td>
+    <td>{{ payment.dateReceived }}</td>
+    <td>{{ payment.amountReceived }}</td>
+    <td>{{ payment.canceled }}</td>
+      {% if 'TODO_name.change_payment' in user.get_all_permissions %}
+ <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:payment_edit' payment.id %}">Update</a> </td>
+    {% endif %}
+
+    {% if 'TODO_name.delete_payment' in user.get_all_permissions %}
+ <td>       <a class="lsf-icon" title="delete" href="{% url 'TODO_name:payment_delete' payment.id %}">Delete</a> </td>
+    {% endif %}
+
+    </tr>
+ <tr>  
+
+    
+    {% endfor %}
+
+{% if 'TODO_name.add_payment' in user.get_all_permissions %}
+<td> <a class="lsf-icon" title="add" href="{% url 'TODO_name:payment_new' %}">New</a> </td>
+{% endif %} </tr> </table>
+{% endblock %}
