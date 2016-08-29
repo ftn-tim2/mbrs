@@ -8,6 +8,7 @@ import myplugin.generator.fmmodel.FMClass;
 public class IndexPage extends StandardPage {
 
     private String projectName;
+    
 
     public IndexPage(String name, String classPackage, String visibility, String projectName) {
         super(name, classPackage, visibility);

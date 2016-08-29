@@ -4,6 +4,7 @@ import com.nomagic.uml2.ext.jmi.helpers.ModelHelper;
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 import myplugin.analyzer.AnalyzeException;
@@ -20,6 +21,8 @@ public class StandardPageStrategy implements IParsingStrategy<StandardPage>{
 	public StandardPage parseObject(Element element, String packageName) throws AnalyzeException {
 
 		Class cclass = (Class) element;
+		
+	
 		StandardPage standardPage = new StandardPage(new FMClass(cclass.getName(), packageName, cclass.getVisibility().toString()));
 		Stereotype standardStereotype = StereotypesHelper.getAppliedStereotypeByString(cclass, "StandardPage");
 
@@ -36,6 +39,12 @@ public class StandardPageStrategy implements IParsingStrategy<StandardPage>{
 		while (it.hasNext()) {
 			Property property = it.next();
 			standardPage.addProperty(ModelAnalyzer.getPropertyData(property, cclass));	
+		}
+		
+		Iterator<Operation> op = ModelHelper.operations(cclass);
+		while(op.hasNext()) {
+			Operation operation = op.next();
+			standardPage.addMethod(operation.getName());
 		}
 		
 		return standardPage;

@@ -45,6 +45,7 @@ def report_week(request):
         c.drawString(1*cm, 27*cm, "Total profit for city:" + zarada.__str__())
         c.save()
         return response
+    
 def report_city(request):
 
     cities  =  City.objects.all()

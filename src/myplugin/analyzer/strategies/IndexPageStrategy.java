@@ -26,7 +26,7 @@ public class IndexPageStrategy implements IParsingStrategy<IndexPage> {
 
         IndexPage indexPage = new IndexPage(new FMClass(_class.getName(), packageName, _class.getVisibility().toString()));
         Stereotype indexStereotype = StereotypesHelper.getAppliedStereotypeByString(_class, "IndexPage");
-
+        
         indexPage.setLabel((String) StereotypesHelper.getStereotypePropertyValue(_class, indexStereotype, "label").get(0));
         indexPage.setProjectName((String) StereotypesHelper.getStereotypePropertyValue(_class, indexStereotype, "projectName").get(0));
 
