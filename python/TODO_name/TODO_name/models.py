@@ -151,7 +151,7 @@ class PriceListItem(models.Model):
 class Payment(models.Model):
     paymetMethod = models.CharField(max_length=50, choices=(("cash","CASH"),("creditCard","CREDITCARD"),("payPal","PAYPAL")))
     dateReceived = models.DateTimeField(null=False)
-    amountReceived = models.DecimalField(max_length=9, editable=False, decimal_places=2, null=False, max_digits=10)
+    amountReceived = models.DecimalField(max_length=9, decimal_places=2, null=False, max_digits=10)
     canceled = models.BooleanField(null=False)
 
     class Meta:
@@ -255,7 +255,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     product = models.ForeignKey(to='Product')
-    category = models.ForeignKey(to='Category')
+    category = models.ForeignKey('Category', blank=True, null=True, related_name='children')
     categoryName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=200, null=True)
 
