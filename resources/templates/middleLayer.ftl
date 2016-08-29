@@ -15,5 +15,9 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 
 </#list>
 }
-
+</#list>
+<#list model.classes as class>
+<#list class.methods as method>
+"${method}"()
+</#list>
 </#list>

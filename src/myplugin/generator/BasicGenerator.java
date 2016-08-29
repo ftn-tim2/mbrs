@@ -39,6 +39,7 @@ public abstract class BasicGenerator {
 		this.filePackage = generatorOptions.getFilePackage();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void generate() throws IOException {		
 		if (outputPath == null) {
 			throw new IOException("Output path is not defined!");
