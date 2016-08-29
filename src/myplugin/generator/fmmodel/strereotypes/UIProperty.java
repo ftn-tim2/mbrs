@@ -65,11 +65,16 @@ public class UIProperty extends FMProperty implements IUIElement {
                 throw new AnalyzeException("Property :" + getName() + " has type" + getType()+ " and Component is decimal, needs decimal_places.");
             if (max_digits == null)
                 throw new AnalyzeException("Property :" + getName() + " has type" + getType()+ " and Component is decimal, needs max_digits.");
+            // handle it in silence
+            if (editable != null)
+                editable = null;
         }
-
     }
 
+
+
     public Iterator<String> getPropertiesKeyValue() throws AnalyzeException {
+        syntaxCheck();
         if (propertiesKeyValue == null) {
             propertiesKeyValue = new ArrayList<>();
             addValueToPropertiesKeyValue("max_length = ", max_length);
@@ -81,7 +86,6 @@ public class UIProperty extends FMProperty implements IUIElement {
             if (enumeration != null)
                 addValueToPropertiesKeyValue("choices = ", convertEnumerationToStrings(this.enumeration));
         }
-        syntaxCheck();
         return propertiesKeyValue.iterator();
 
     }
