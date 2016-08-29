@@ -110,6 +110,7 @@
         </myplugin.generator.fmmodel.strereotypes.Next>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>City</label>
       </uiElement>
@@ -181,6 +182,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Enetrprise</label>
       </uiElement>
@@ -227,6 +229,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>State
 </label>
@@ -307,6 +310,10 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>reportOrders</string>
+        <string>reportInvoices</string>
+      </methods>
       <uiElement>
         <label>Department</label>
       </uiElement>
@@ -377,6 +384,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Vendor</label>
       </uiElement>
@@ -516,6 +524,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Order item</label>
       </uiElement>
@@ -676,6 +685,11 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>finish</string>
+        <string>createInvoice</string>
+        <string>cancel</string>
+      </methods>
       <uiElement>
         <label>Order</label>
       </uiElement>
@@ -745,6 +759,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Price list item</label>
       </uiElement>
@@ -818,12 +833,16 @@
           </uiElement>
           <max__length>9</max__length>
           <editable>false</editable>
+          <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
+          <max__digits>10</max__digits>
           <propertiesKeyValue>
             <string>max_length = 9</string>
             <string>editable = false</string>
+            <string>decimal_places = 2</string>
             <string>null = false</string>
+            <string>max_digits = 10</string>
           </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -845,6 +864,9 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>cancel</string>
+      </methods>
       <uiElement>
         <label>Payment</label>
       </uiElement>
@@ -927,6 +949,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Invoice</label>
       </uiElement>
@@ -997,6 +1020,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Customer</label>
       </uiElement>
@@ -1056,6 +1080,9 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>copy</string>
+      </methods>
       <uiElement>
         <label>Price list</label>
       </uiElement>
@@ -1126,6 +1153,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Stock</label>
       </uiElement>
@@ -1222,6 +1250,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Product</label>
       </uiElement>
@@ -1304,6 +1333,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Category</label>
       </uiElement>
@@ -1378,6 +1408,7 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Stock Keeping Unit</label>
       </uiElement>
