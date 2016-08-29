@@ -92,11 +92,11 @@ class Vendor(models.Model):
 
 
 class OrderItem(models.Model):
-    orderedQuantity = models.DecimalField(editable=True, decimal_places=2, null=False, max_digits=15)
-    available = models.DecimalField(editable=True, decimal_places=2, null=True, max_digits=15)
-    unitPrice = models.DecimalField(editable=True, decimal_places=2, null=False, max_digits=15)
-    unitTax = models.DecimalField(editable=True, decimal_places=2, null=False, max_digits=15)
-    value = models.DecimalField(editable=True, decimal_places=2, null=False, max_digits=10)
+    orderedQuantity = models.DecimalField(decimal_places=2, null=False, max_digits=15)
+    available = models.DecimalField(decimal_places=2, null=True, max_digits=15)
+    unitPrice = models.DecimalField(decimal_places=2, null=False, max_digits=15)
+    unitTax = models.DecimalField(decimal_places=2, null=False, max_digits=15)
+    value = models.DecimalField(decimal_places=2, null=False, max_digits=10)
 
     class Meta:
         permissions = (
@@ -255,7 +255,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     product = models.ForeignKey(to='Product')
-    category = models.ForeignKey('Category', blank=True, null=True, related_name='children')
+    category = models.ForeignKey(to='Category')
     categoryName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=200, null=True)
 

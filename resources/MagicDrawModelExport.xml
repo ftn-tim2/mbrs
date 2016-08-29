@@ -311,8 +311,20 @@
       </FMProperties>
       <importedPackages/>
       <methods>
-        <string>reportOrders</string>
-        <string>reportInvoices</string>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>reportOrders</name>
+          <parameters>
+            <string>fromDate</string>
+            <string>toDate</string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>reportInvoices</name>
+          <parameters>
+            <string>fromDate</string>
+            <string>toDate</string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
       </methods>
       <uiElement>
         <label>Department</label>
@@ -421,13 +433,11 @@
           <uiElement>
             <label></label>
           </uiElement>
-          <editable>true</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
           <propertiesKeyValue>
-            <string>editable = true</string>
             <string>decimal_places = 2</string>
             <string>null = false</string>
             <string>max_digits = 15</string>
@@ -443,13 +453,11 @@
           <uiElement>
             <label></label>
           </uiElement>
-          <editable>true</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>true</nullable>
           <max__digits>15</max__digits>
           <propertiesKeyValue>
-            <string>editable = true</string>
             <string>decimal_places = 2</string>
             <string>null = true</string>
             <string>max_digits = 15</string>
@@ -465,13 +473,11 @@
           <uiElement>
             <label></label>
           </uiElement>
-          <editable>true</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
           <propertiesKeyValue>
-            <string>editable = true</string>
             <string>decimal_places = 2</string>
             <string>null = false</string>
             <string>max_digits = 15</string>
@@ -487,13 +493,11 @@
           <uiElement>
             <label></label>
           </uiElement>
-          <editable>true</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
           <propertiesKeyValue>
-            <string>editable = true</string>
             <string>decimal_places = 2</string>
             <string>null = false</string>
             <string>max_digits = 15</string>
@@ -509,13 +513,11 @@
           <uiElement>
             <label></label>
           </uiElement>
-          <editable>true</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
           <propertiesKeyValue>
-            <string>editable = true</string>
             <string>decimal_places = 2</string>
             <string>null = false</string>
             <string>max_digits = 10</string>
@@ -686,9 +688,24 @@
       </FMProperties>
       <importedPackages/>
       <methods>
-        <string>finish</string>
-        <string>createInvoice</string>
-        <string>cancel</string>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>finish</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>createInvoice</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>cancel</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
       </methods>
       <uiElement>
         <label>Order</label>
@@ -832,14 +849,12 @@
             <label></label>
           </uiElement>
           <max__length>9</max__length>
-          <editable>false</editable>
           <decimal__places>2</decimal__places>
           <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
           <propertiesKeyValue>
             <string>max_length = 9</string>
-            <string>editable = false</string>
             <string>decimal_places = 2</string>
             <string>null = false</string>
             <string>max_digits = 10</string>
@@ -865,7 +880,10 @@
       </FMProperties>
       <importedPackages/>
       <methods>
-        <string>cancel</string>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>cancel</name>
+          <parameters/>
+        </myplugin.generator.fmmodel.FMMethod>
       </methods>
       <uiElement>
         <label>Payment</label>
@@ -1081,7 +1099,12 @@
       </FMProperties>
       <importedPackages/>
       <methods>
-        <string>copy</string>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>copy</name>
+          <parameters>
+            <string>percentage</string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
       </methods>
       <uiElement>
         <label>Price list</label>
