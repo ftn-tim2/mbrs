@@ -21,3 +21,5 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 "${method.name}"(<#list method.parameters as p><#if p!="">"${p}"</#if><#if p?is_last><#else>,</#if></#list>)
 </#list>
 </#list>
+
+

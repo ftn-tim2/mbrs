@@ -1,5 +1,6 @@
 package myplugin.generator.fmmodel.strereotypes;
 
+import myplugin.analyzer.AnalyzeException;
 import myplugin.generator.fmmodel.FMEnumeration;
 import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.fmmodel.strereotypes.interfaces.IUIElement;
@@ -57,7 +58,18 @@ public class UIProperty extends FMProperty implements IUIElement {
         uiElement = new UIElement();
     }
 
-    public Iterator<String> getPropertiesKeyValue() {
+    public void syntaxCheck() throws AnalyzeException {
+        if (component != null && component.equals("decimal"))
+        {
+            if (decimal_places == null)
+                throw new AnalyzeException("Property :" + getName() + " has type" + getType()+ " and Component is decimal, needs decimal_places.");
+            if (max_digits == null)
+                throw new AnalyzeException("Property :" + getName() + " has type" + getType()+ " and Component is decimal, needs max_digits.");
+        }
+
+    }
+
+    public Iterator<String> getPropertiesKeyValue() throws AnalyzeException {
         if (propertiesKeyValue == null) {
             propertiesKeyValue = new ArrayList<>();
             addValueToPropertiesKeyValue("max_length = ", max_length);
@@ -69,6 +81,7 @@ public class UIProperty extends FMProperty implements IUIElement {
             if (enumeration != null)
                 addValueToPropertiesKeyValue("choices = ", convertEnumerationToStrings(this.enumeration));
         }
+        syntaxCheck();
         return propertiesKeyValue.iterator();
 
     }

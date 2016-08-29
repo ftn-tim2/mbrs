@@ -1,5 +1,6 @@
 package myplugin.generator.fmmodel.strereotypes;
 
+import myplugin.analyzer.AnalyzeException;
 import myplugin.generator.fmmodel.FMProperty;
 import org.apache.commons.collections.IteratorUtils;
 
@@ -29,7 +30,7 @@ public class Next extends UIAssocEnd {
     }
 
     @Override
-    public Iterator<String> getPropertiesKeyValue() {
+    public Iterator<String> getPropertiesKeyValue() throws AnalyzeException {
         List result = IteratorUtils.toList(super.getPropertiesKeyValue());
         result.add("to = " + "\"" + this.getType() + "\"");
         return result.iterator();

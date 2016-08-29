@@ -14,6 +14,7 @@
           <uiElement>
             <label>List of enterprises in city</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -53,6 +54,10 @@
           <max__length>12</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 12</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -64,6 +69,7 @@
           <uiElement>
             <label>List of departments in the city</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -75,6 +81,7 @@
           <uiElement>
             <label>List of vendors in the city</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -86,6 +93,7 @@
           <uiElement>
             <label>List of orders in the city</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -97,10 +105,12 @@
           <uiElement>
             <label>List of customer in the city</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>City</label>
       </uiElement>
@@ -126,6 +136,10 @@
           <max__length>50</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 50</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -140,6 +154,10 @@
           <max__length>150</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 150</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -152,6 +170,7 @@
             <label>List of departments</label>
           </uiElement>
           <component>char</component>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -163,6 +182,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Enetrprise</label>
       </uiElement>
@@ -186,6 +206,7 @@
             <label>City list of state</label>
           </uiElement>
           <component>char</component>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -200,13 +221,18 @@
           <max__length>25</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 25</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>State
-        </label>
+</label>
       </uiElement>
       <create>true</create>
       <delete>false</delete>
@@ -231,6 +257,11 @@
           <editable>true</editable>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 20</string>
+            <string>editable = true</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -245,6 +276,10 @@
           <max__length>155</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 155</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.FMProperty>
@@ -263,6 +298,7 @@
           <uiElement>
             <label>List of stocks</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -274,6 +310,10 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>reportOrders</string>
+        <string>reportInvoices</string>
+      </methods>
       <uiElement>
         <label>Department</label>
       </uiElement>
@@ -296,6 +336,7 @@
           <uiElement>
             <label>List of products</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -310,6 +351,10 @@
           <max__length>30</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 30</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -324,6 +369,10 @@
           <max__length>150</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 150</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.FMProperty>
@@ -335,6 +384,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Vendor</label>
       </uiElement>
@@ -373,9 +423,15 @@
           </uiElement>
           <editable>true</editable>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
+          <propertiesKeyValue>
+            <string>editable = true</string>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 15</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -389,9 +445,15 @@
           </uiElement>
           <editable>true</editable>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>true</nullable>
           <max__digits>15</max__digits>
+          <propertiesKeyValue>
+            <string>editable = true</string>
+            <string>decimal_places = 2</string>
+            <string>null = true</string>
+            <string>max_digits = 15</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -405,9 +467,15 @@
           </uiElement>
           <editable>true</editable>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
+          <propertiesKeyValue>
+            <string>editable = true</string>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 15</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -421,9 +489,15 @@
           </uiElement>
           <editable>true</editable>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>15</max__digits>
+          <propertiesKeyValue>
+            <string>editable = true</string>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 15</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -437,13 +511,20 @@
           </uiElement>
           <editable>true</editable>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>editable = true</string>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Order item</label>
       </uiElement>
@@ -466,6 +547,7 @@
           <uiElement>
             <label>List of order items</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -477,6 +559,7 @@
           <uiElement>
             <label>Canceled payments</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -488,6 +571,7 @@
           <uiElement>
             <label></label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -501,6 +585,9 @@
           </uiElement>
           <component>int</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -514,6 +601,9 @@
           </uiElement>
           <component>dateTime</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -528,6 +618,10 @@
           <max__length>200</max__length>
           <component>text</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 200</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -541,6 +635,9 @@
           </uiElement>
           <component>int</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -555,6 +652,11 @@
           <max__length>30</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 30</string>
+            <string>null = false</string>
+            <string>choices = ((&quot;ORDERING&quot;,&quot;ordering&quot;),(&quot;FINISHED&quot;,&quot;finished&quot;),(&quot;CANCELED&quot;,&quot;canceled&quot;),(&quot;SHIPPED&quot;,&quot;shipped&quot;))</string>
+          </propertiesKeyValue>
           <enumeration>
             <name>OrderStatus</name>
             <typePackage>ejb.Ordering.OrderInvoice</typePackage>
@@ -583,6 +685,11 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>finish</string>
+        <string>createInvoice</string>
+        <string>cancel</string>
+      </methods>
       <uiElement>
         <label>Order</label>
       </uiElement>
@@ -620,9 +727,14 @@
             <label></label>
           </uiElement>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -635,13 +747,19 @@
             <label></label>
           </uiElement>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Price list item</label>
       </uiElement>
@@ -673,6 +791,10 @@
           </uiElement>
           <max__length>50</max__length>
           <component>char</component>
+          <propertiesKeyValue>
+            <string>max_length = 50</string>
+            <string>choices = ((&quot;CASH&quot;,&quot;cash&quot;),(&quot;CREDITCARD&quot;,&quot;creditCard&quot;),(&quot;PAYPAL&quot;,&quot;payPal&quot;))</string>
+          </propertiesKeyValue>
           <enumeration>
             <name>PaymentMethod</name>
             <typePackage>ejb.Ordering.OrderInvoice</typePackage>
@@ -695,6 +817,9 @@
           </uiElement>
           <component>dateTime</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -708,8 +833,17 @@
           </uiElement>
           <max__length>9</max__length>
           <editable>false</editable>
-          <component>float</component>
+          <decimal__places>2</decimal__places>
+          <component>decimal</component>
           <nullable>false</nullable>
+          <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>max_length = 9</string>
+            <string>editable = false</string>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -723,10 +857,16 @@
           </uiElement>
           <component>boolean</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>cancel</string>
+      </methods>
       <uiElement>
         <label>Payment</label>
       </uiElement>
@@ -758,6 +898,9 @@
           </uiElement>
           <component>int</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -770,6 +913,7 @@
             <label></label>
           </uiElement>
           <component>dateTime</component>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -784,6 +928,10 @@
           <max__length>300</max__length>
           <component>text</component>
           <nullable>true</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 300</string>
+            <string>null = true</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -796,10 +944,12 @@
             <label></label>
           </uiElement>
           <component>boolean</component>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Invoice</label>
       </uiElement>
@@ -825,6 +975,10 @@
           <max__length>31</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 31</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -839,6 +993,10 @@
           <max__length>51</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 51</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -850,6 +1008,7 @@
           <uiElement>
             <label>Customer&apos;s order list</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -861,6 +1020,7 @@
         </myplugin.generator.fmmodel.FMProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Customer</label>
       </uiElement>
@@ -883,6 +1043,7 @@
           <uiElement>
             <label>Item&apos;s prices</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -896,6 +1057,9 @@
           </uiElement>
           <component>int</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -909,10 +1073,16 @@
           </uiElement>
           <component>dateTime</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods>
+        <string>copy</string>
+      </methods>
       <uiElement>
         <label>Price list</label>
       </uiElement>
@@ -942,6 +1112,7 @@
           <uiElement>
             <label>List of stock keeping units</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -956,6 +1127,10 @@
           <max__length>20</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 20</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -970,10 +1145,15 @@
           <max__length>255</max__length>
           <component>text</component>
           <nullable>true</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 255</string>
+            <string>null = true</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Stock</label>
       </uiElement>
@@ -1010,6 +1190,7 @@
           <uiElement>
             <label>List of price list items</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -1028,6 +1209,7 @@
           <uiElement>
             <label>List of orders</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -1042,6 +1224,10 @@
           <max__length>25</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 25</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -1056,10 +1242,15 @@
           <max__length>255</max__length>
           <component>text</component>
           <nullable>true</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 255</string>
+            <string>null = true</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Product</label>
       </uiElement>
@@ -1082,6 +1273,7 @@
           <uiElement>
             <label>Category has products</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.Next>
@@ -1093,6 +1285,7 @@
           <uiElement>
             <label>Category&apos;s subcategories</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.FMProperty>
@@ -1114,6 +1307,10 @@
           <max__length>25</max__length>
           <component>char</component>
           <nullable>false</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 25</string>
+            <string>null = false</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -1128,10 +1325,15 @@
           <max__length>200</max__length>
           <component>text</component>
           <nullable>true</nullable>
+          <propertiesKeyValue>
+            <string>max_length = 200</string>
+            <string>null = true</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Category</label>
       </uiElement>
@@ -1161,6 +1363,7 @@
           <uiElement>
             <label>Products in unit</label>
           </uiElement>
+          <propertiesKeyValue/>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.Next>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -1173,9 +1376,14 @@
             <label></label>
           </uiElement>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
         <myplugin.generator.fmmodel.strereotypes.UIProperty>
@@ -1188,13 +1396,19 @@
             <label></label>
           </uiElement>
           <decimal__places>2</decimal__places>
-          <component>float</component>
+          <component>decimal</component>
           <nullable>false</nullable>
           <max__digits>10</max__digits>
+          <propertiesKeyValue>
+            <string>decimal_places = 2</string>
+            <string>null = false</string>
+            <string>max_digits = 10</string>
+          </propertiesKeyValue>
           <dropDownFlag>false</dropDownFlag>
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
+      <methods/>
       <uiElement>
         <label>Stock Keeping Unit</label>
       </uiElement>
