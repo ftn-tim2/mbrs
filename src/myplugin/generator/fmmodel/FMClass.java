@@ -17,7 +17,7 @@ public class FMClass extends FMType {
 	private List<String> importedPackages = new ArrayList<>();
 	
 	/** @ToDo: add list of methods */
-	private List<String> methods = new ArrayList<>();
+	private List<FMMethod> methods = new ArrayList<>();
 
 	public FMClass(){
 		super();
@@ -28,26 +28,24 @@ public class FMClass extends FMType {
 		this.visibility = visibility;
 	}	
 	
-	public List<String> getMethods() {
-		return methods;
-	}
-
+	
 	public List<FMProperty> getProperties(){
 		return FMProperties;
 	}
 	
-	public Iterator<String> getMethodsIterator(){
+	public Iterator<FMMethod> getMethodsIterator(){
 		return methods.iterator();
 	}
 	
-	public void addMethod(String method){
+	public void addMethod (FMMethod method) {
 		methods.add(method);
 	}
 	
-	public int getMethodsCount(){
-		return methods.size();
-	}
 	
+	public List<FMMethod> getMethods() {
+		return methods;
+	}
+
 	public Iterator<FMProperty> getPropertyIterator(){
 		return FMProperties.iterator();
 	}

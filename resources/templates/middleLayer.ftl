@@ -18,6 +18,6 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 </#list>
 <#list model.classes as class>
 <#list class.methods as method>
-"${method}"()
+"${method.name}"(<#list method.parameters as p><#if p!="">"${p}"</#if><#if p?is_last><#else>,</#if></#list>)
 </#list>
 </#list>

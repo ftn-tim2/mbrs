@@ -5,14 +5,17 @@ import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Parameter;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 import myplugin.analyzer.AnalyzeException;
 import myplugin.analyzer.ModelAnalyzer;
 import myplugin.generator.fmmodel.FMClass;
+import myplugin.generator.fmmodel.FMMethod;
 import myplugin.generator.fmmodel.strereotypes.StandardPage;
 
 import java.util.Iterator;
+import java.util.List;
 
 
 public class StandardPageStrategy implements IParsingStrategy<StandardPage>{
@@ -44,7 +47,13 @@ public class StandardPageStrategy implements IParsingStrategy<StandardPage>{
 		Iterator<Operation> op = ModelHelper.operations(cclass);
 		while(op.hasNext()) {
 			Operation operation = op.next();
-			standardPage.addMethod(operation.getName());
+			FMMethod method = new FMMethod();
+			method.setName(operation.getName());
+			List<Parameter> params = operation.getOwnedParameter();
+			for(Parameter p :params){
+				method.getParameters().add(p.getName());
+			}
+			standardPage.addMethod(method);
 		}
 		
 		return standardPage;
