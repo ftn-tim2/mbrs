@@ -74,4 +74,5 @@ urlpatterns = patterns('',
 					   url(r'^cancel/$', 'TODO_name.customViews.cancel', name='cancel'),
 					   url(r'^cancel/$', 'TODO_name.customViews.cancel', name='cancel'),
 					   url(r'^copy/(?P<percentage>\d+)$', 'TODO_name.customViews.copy', name='copy'),
+                       url(r'^report_week', 'TODO_name.customViews.report_week', name='report_week'),
 )

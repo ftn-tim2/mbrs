@@ -255,7 +255,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     product = models.ForeignKey(to='Product')
-    category = models.ForeignKey(to='Category')
+    category = models.ForeignKey(to='Category', blank=True, null=True, related_name='children')
     categoryName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=200, null=True)
 
