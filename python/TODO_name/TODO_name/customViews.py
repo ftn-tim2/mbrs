@@ -14,7 +14,7 @@ from apps.settings import BASE_DIR
 from TODO_name.models import Order
 from TODO_name.models import City
 
-#TODO add missing methods
+#TODO implement missing methods
 #url(r'^reportorders/$', 'TODO_name.customViews.reportorders', name='reportorders'),
 #url(r'^reportinvoices/$', 'TODO_name.customViews.reportinvoices', name='reportinvoices'),
 #url(r'^finish/$', 'TODO_name.customViews.finish', name='finish'),
