@@ -25,7 +25,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 		 * ProjectOptions.xml and take ejb generator options */
 		
 		//for test purpose only:
-		GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "middleLayer", "templates", "{0}.txt", true, "JDS");
+		GeneratorOptions ejbOptions = new GeneratorOptions(System.getProperty("user.home") + "/generated", "middleLayer", "templates", "{0}.txt", true, "JDS");
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("EJBGenerator", ejbOptions);
 				
 		ejbOptions.setTemplateDir(pluginDir + File.separator + ejbOptions.getTemplateDir()); //apsolutna putanja

@@ -18,7 +18,7 @@ class City(models.Model):
         )
 
     def __str__(self):
-        return str(self.enterprise)
+        return self.enterprise
 
     def get_absolute_url(self):
         return reverse('TODO_name:city_edit', kwargs={'pk': self.pk})
@@ -35,7 +35,7 @@ class Enterprise(models.Model):
         )
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
     def get_absolute_url(self):
         return reverse('TODO_name:enterprise_edit', kwargs={'pk': self.pk})
@@ -51,7 +51,7 @@ class State(models.Model):
         )
 
     def __str__(self):
-        return str(self.city)
+        return self.city
 
     def get_absolute_url(self):
         return reverse('TODO_name:state_edit', kwargs={'pk': self.pk})
@@ -68,7 +68,7 @@ class Department(models.Model):
         )
 
     def __str__(self):
-        return str(self.departmentName)
+        return self.departmentName
 
     def get_absolute_url(self):
         return reverse('TODO_name:department_edit', kwargs={'pk': self.pk})
@@ -85,7 +85,7 @@ class Vendor(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return self.product
 
     def get_absolute_url(self):
         return reverse('TODO_name:vendor_edit', kwargs={'pk': self.pk})
@@ -104,7 +104,7 @@ class OrderItem(models.Model):
         )
 
     def __str__(self):
-        return str(self.orderedQuantity)
+        return self.orderedQuantity
 
     def get_absolute_url(self):
         return reverse('TODO_name:orderitem_edit', kwargs={'pk': self.pk})
@@ -126,7 +126,7 @@ class Order(models.Model):
         )
 
     def __str__(self):
-        return str(self.orderItem)
+        return self.orderItem
 
     def get_absolute_url(self):
         return reverse('TODO_name:order_edit', kwargs={'pk': self.pk})
@@ -142,7 +142,7 @@ class PriceListItem(models.Model):
         )
 
     def __str__(self):
-        return str(self.price)
+        return self.price
 
     def get_absolute_url(self):
         return reverse('TODO_name:pricelistitem_edit', kwargs={'pk': self.pk})
@@ -160,7 +160,7 @@ class Payment(models.Model):
         )
 
     def __str__(self):
-        return str(self.paymetMethod)
+        return self.paymetMethod
 
     def get_absolute_url(self):
         return reverse('TODO_name:payment_edit', kwargs={'pk': self.pk})
@@ -178,7 +178,7 @@ class Invoice(models.Model):
         )
 
     def __str__(self):
-        return str(self.invoiceNumber)
+        return self.invoiceNumber
 
     def get_absolute_url(self):
         return reverse('TODO_name:invoice_edit', kwargs={'pk': self.pk})
@@ -195,7 +195,7 @@ class Customer(models.Model):
         )
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
     def get_absolute_url(self):
         return reverse('TODO_name:customer_edit', kwargs={'pk': self.pk})
@@ -212,7 +212,7 @@ class PriceList(models.Model):
         )
 
     def __str__(self):
-        return str(self.priceListItem)
+        return self.priceListItem
 
     def get_absolute_url(self):
         return reverse('TODO_name:pricelist_edit', kwargs={'pk': self.pk})
@@ -229,7 +229,7 @@ class Stock(models.Model):
         )
 
     def __str__(self):
-        return str(self.stockKeepingUnit)
+        return self.stockKeepingUnit
 
     def get_absolute_url(self):
         return reverse('TODO_name:stock_edit', kwargs={'pk': self.pk})
@@ -247,7 +247,7 @@ class Product(models.Model):
         )
 
     def __str__(self):
-        return str(self.priceListItem)
+        return self.priceListItem
 
     def get_absolute_url(self):
         return reverse('TODO_name:product_edit', kwargs={'pk': self.pk})
@@ -255,7 +255,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     product = models.ForeignKey(to='Product')
-    category = models.ForeignKey('Category', blank=True, null=True, related_name='children')
+    category = models.ForeignKey(to='Category', blank=True, null=True, related_name='children')
     categoryName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=200, null=True)
 
@@ -265,7 +265,7 @@ class Category(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return self.product
 
     def get_absolute_url(self):
         return reverse('TODO_name:category_edit', kwargs={'pk': self.pk})
@@ -282,7 +282,7 @@ class StockKeepingUnit(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return self.product
 
     def get_absolute_url(self):
         return reverse('TODO_name:stockkeepingunit_edit', kwargs={'pk': self.pk})

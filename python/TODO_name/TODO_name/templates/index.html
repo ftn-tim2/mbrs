@@ -119,6 +119,11 @@
     </td>
     {% endif %}
 </tr>
+	{% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/report_week">reportWeek</a> </td>
+	  {% endif %}
+</tr>
 	 {% if user.is_authenticated%}
 <tr>
 	<td> <a href="/TODO_name/reportorders">reportOrders</a> </td>

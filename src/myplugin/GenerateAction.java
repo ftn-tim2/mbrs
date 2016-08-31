@@ -40,6 +40,7 @@ class GenerateAction extends MDAction {
             GeneratorOptions go = ProjectOptions.getProjectOptions().getGeneratorOptions().get("EJBGenerator");
             EJBGenerator generator = new EJBGenerator(go);
             generator.generate(fmModel);
+            GenerateDjango.generateDjango(System.getProperty("user.home") + "/generated/jsd", "modelName.txt", System.getProperty("user.home") + "/generated");
             JOptionPane.showMessageDialog(null, "Code is successfully generated! Generated code is in folder: " + go.getOutputPath() +
                     "package: " + go.getFilePackage());
             exportToXml(fmModel);
