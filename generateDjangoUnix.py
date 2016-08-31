@@ -14,6 +14,7 @@ with open(activate_this_file) as f:
 print("Successfully Activated virtualenv")
 
 print("---------Install missing packeges.---------")
+os.system("python -m pip install --upgrade pip")
 os.system("pip install " + packagename)
 print("Successfully finished package installation.")
 
