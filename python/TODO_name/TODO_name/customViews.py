@@ -23,6 +23,30 @@ from TODO_name.models import City
 #url(r'^cancel/$', 'TODO_name.customViews.cancel', name='cancel'),
 #url(r'^copy/$', 'TODO_name.customViews.copy', name='copy'),
 
+def copy(request):
+
+    return response
+
+def cancel(request):
+
+    return response
+ 
+def createinvoice(request):
+
+    return response
+ 
+def finish(request):
+
+    return response
+
+def reportinvoices(request):
+
+    return response 
+
+def reportorders(request):
+
+    return response
+
 def report_week(request):
 
     cities  =  City.objects.all()
