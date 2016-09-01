@@ -154,6 +154,15 @@
 	<td> <a href="/TODO_name/copy">copy</a> </td>
 	  {% endif %}
 </tr>
-
+ 	  {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/report_week">reportWeek</a> </td>
+	  {% endif %}
+</tr>
+ 	  {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/report_city">reportCity</a> </td>
+	  {% endif %}
+</tr>
 {% endblock %}
 
