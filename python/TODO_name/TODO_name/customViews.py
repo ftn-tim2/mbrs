@@ -13,6 +13,7 @@ from reportlab.pdfgen import canvas
 from apps.settings import BASE_DIR
 from TODO_name.models import Order
 from TODO_name.models import City
+from TODO_name.models import Invoice
 
 #TODO implement missing methods
 #url(r'^reportorders/$', 'TODO_name.customViews.reportorders', name='reportorders'),
@@ -41,11 +42,47 @@ def finish(request):
 
 def reportinvoices(request):
 
+    invoices  =  Invoice.objects.all()
+    filename = "Invoices" +datetime.now().strftime('%B%d-%Y-%I-%M-%S%p') + '.pdf'
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+    c = canvas.Canvas(response)
+    c.drawString(7*cm, 29*cm, "Invoices")
+    c.drawString(3*cm, 27*cm, "Invoice number")
+    c.drawString(8*cm, 27*cm, "Date")
+    c.drawString(12*cm, 27*cm, "Total")
+    c.drawString(15*cm, 27*cm, "Status")
+    row = 25
+    for i in invoices:
+        c.drawString(3*cm, row*cm, i.invoiceNumber.__str__())
+        c.drawString(5*cm, row*cm, i.invoiceDate.__str__())
+        c.drawString(12*cm, row*cm, i.invoiceTotal.__str__())
+        c.drawString(15*cm, row*cm, i.canceled.__str__())
+        row = row - 1
+    c.save()
     return response 
 
 def reportorders(request):
 
-    return response
+    orders  =  Order.objects.all()
+    filename = "Order" +datetime.now().strftime('%B%d-%Y-%I-%M-%S%p') + '.pdf'
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+    c = canvas.Canvas(response)
+    c.drawString(7*cm, 29*cm, "Orders")
+    c.drawString(3*cm, 27*cm, "Order number")
+    c.drawString(8*cm, 27*cm, "Date")
+    c.drawString(12*cm, 27*cm, "Total")
+    c.drawString(15*cm, 27*cm, "Status")
+    row = 25
+    for o in orders:
+        c.drawString(3*cm, row*cm, o.orderNumber.__str__())
+        c.drawString(5*cm, row*cm, o.orderDate.__str__())
+        c.drawString(12*cm, row*cm, o.orderTotal.__str__())
+        c.drawString(15*cm, row*cm, o.orderStatus.__str__())
+        row = row - 1
+    c.save()
+    return response 
 
 def report_week(request):
 
