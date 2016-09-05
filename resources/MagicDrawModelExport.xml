@@ -110,7 +110,20 @@
         </myplugin.generator.fmmodel.strereotypes.Next>
       </FMProperties>
       <importedPackages/>
-      <methods/>
+      <methods>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>report_city</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>report_week</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+      </methods>
       <uiElement>
         <label>City</label>
       </uiElement>
@@ -739,6 +752,12 @@
             <string></string>
           </parameters>
         </myplugin.generator.fmmodel.FMMethod>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>reportorders</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
       </methods>
       <uiElement>
         <label>Order</label>
@@ -1020,7 +1039,14 @@
         </myplugin.generator.fmmodel.strereotypes.UIProperty>
       </FMProperties>
       <importedPackages/>
-      <methods/>
+      <methods>
+        <myplugin.generator.fmmodel.FMMethod>
+          <name>reportinvoices</name>
+          <parameters>
+            <string></string>
+          </parameters>
+        </myplugin.generator.fmmodel.FMMethod>
+      </methods>
       <uiElement>
         <label>Invoice</label>
       </uiElement>
