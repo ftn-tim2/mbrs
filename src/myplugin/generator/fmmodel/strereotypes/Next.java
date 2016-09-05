@@ -1,16 +1,11 @@
 package myplugin.generator.fmmodel.strereotypes;
 
-import myplugin.analyzer.AnalyzeException;
 import myplugin.generator.fmmodel.FMProperty;
-import org.apache.commons.collections.IteratorUtils;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Jozef on 8/20/2016.
  */
-public class Next extends UIAssocEnd {
+public class Next extends ForeignKey {
 
     @Override
     public String toString() {
@@ -28,12 +23,4 @@ public class Next extends UIAssocEnd {
     public Next(FMProperty property) {
         super(property.getName(), property.getType(), property.getVisibility(), property.getUpper(), property.getLower());
     }
-
-    @Override
-    public Iterator<String> getPropertiesKeyValue() throws AnalyzeException {
-        List result = IteratorUtils.toList(super.getPropertiesKeyValue());
-        result.add("to = " + "\"" + this.getType() + "\"");
-        return result.iterator();
-    }
-
 }

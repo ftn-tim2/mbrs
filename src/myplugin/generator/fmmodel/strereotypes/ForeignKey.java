@@ -1,27 +1,32 @@
 package myplugin.generator.fmmodel.strereotypes;
 
+import myplugin.analyzer.AnalyzeException;
 import myplugin.generator.fmmodel.FMProperty;
+import org.apache.commons.collections.IteratorUtils;
+
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Jozef on 8/20/2016.
  */
-public class UIAssocEnd extends UIProperty {
+public class ForeignKey extends UIProperty {
 
-    public UIAssocEnd() {
+    public ForeignKey() {
         super();
     }
 
-    public UIAssocEnd(String name, String type, String visibility, int lower, int upper) {
+    public ForeignKey(String name, String type, String visibility, int lower, int upper) {
         super(name, type, visibility, lower, upper);
         uiElement = new UIElement();
     }
 
-    public UIAssocEnd(FMProperty fmProperty, Integer length, Integer precision, Boolean nullable) {
+    public ForeignKey(FMProperty fmProperty, Integer length, Integer precision, Boolean nullable) {
         super(fmProperty.getName(), fmProperty.getType(), fmProperty.getVisibility(), fmProperty.getLower(), fmProperty.getUpper());
         uiElement = new UIElement();
     }
 
-    public UIAssocEnd(FMProperty property) {
+    public ForeignKey(FMProperty property) {
         super(property.getName(), property.getType(), property.getVisibility(), property.getUpper(), property.getLower());
         uiElement = new UIElement();
     }
@@ -40,6 +45,13 @@ public class UIAssocEnd extends UIProperty {
 
     public void setUiElement(UIElement uiElement) {
         this.uiElement = uiElement;
+    }
+
+    @Override
+    public Iterator<String> getPropertiesKeyValue() throws AnalyzeException {
+        List result = IteratorUtils.toList(super.getPropertiesKeyValue());
+        result.add("to = " + "\"" + this.getType() + "\"");
+        return result.iterator();
     }
 
 }
