@@ -121,6 +121,16 @@
 </tr>
 	 {% if user.is_authenticated%}
 <tr>
+	<td> <a href="/TODO_name/report_city">report_city</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/report_week">report_week</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
 	<td> <a href="/TODO_name/reportorders">reportOrders</a> </td>
 	  {% endif %}
 </tr>
@@ -146,7 +156,17 @@
 </tr>
 	 {% if user.is_authenticated%}
 <tr>
+	<td> <a href="/TODO_name/reportorders">reportorders</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
 	<td> <a href="/TODO_name/cancel">cancel</a> </td>
+	  {% endif %}
+</tr>
+	 {% if user.is_authenticated%}
+<tr>
+	<td> <a href="/TODO_name/reportinvoices">reportinvoices</a> </td>
 	  {% endif %}
 </tr>
 	 {% if user.is_authenticated%}
@@ -154,15 +174,6 @@
 	<td> <a href="/TODO_name/copy">copy</a> </td>
 	  {% endif %}
 </tr>
- 	  {% if user.is_authenticated%}
-<tr>
-	<td> <a href="/TODO_name/report_week">reportWeek</a> </td>
-	  {% endif %}
-</tr>
- 	  {% if user.is_authenticated%}
-<tr>
-	<td> <a href="/TODO_name/report_city">reportCity</a> </td>
-	  {% endif %}
-</tr>
+
 {% endblock %}
 

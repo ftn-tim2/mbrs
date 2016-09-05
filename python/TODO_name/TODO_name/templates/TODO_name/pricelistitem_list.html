@@ -9,6 +9,8 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
+    <th>Product</th>
+    <th>Pricelist</th>
     <th>Price</th>
     <th>Tax</th>
   {% if 'TODO_name.change_pricelistitem' in user.get_all_permissions %}
@@ -21,6 +23,8 @@
 
     {% for pricelistitem in object_list %}
    <tr>
+    <td>{{ pricelistitem.product }}</td>
+    <td>{{ pricelistitem.priceList }}</td>
     <td>{{ pricelistitem.price }}</td>
     <td>{{ pricelistitem.tax }}</td>
       {% if 'TODO_name.change_pricelistitem' in user.get_all_permissions %}

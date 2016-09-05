@@ -9,14 +9,13 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Orderitem</th>
-    <th>Payment</th>
-    <th>Invoice</th>
     <th>Ordernumber</th>
     <th>Orderdate</th>
     <th>Shipmentaddress</th>
     <th>Ordertotal</th>
     <th>Orderstatus</th>
+    <th>City</th>
+    <th>Customer</th>
   {% if 'TODO_name.change_order' in user.get_all_permissions %}
     <th>Update</th>
      {% endif %}
@@ -27,14 +26,13 @@
 
     {% for order in object_list %}
    <tr>
-    <td>{{ order.orderItem }}</td>
-    <td>{{ order.payment }}</td>
-    <td>{{ order.invoice }}</td>
     <td>{{ order.orderNumber }}</td>
     <td>{{ order.orderDate }}</td>
     <td>{{ order.shipmentAddress }}</td>
     <td>{{ order.orderTotal }}</td>
     <td>{{ order.orderStatus }}</td>
+    <td>{{ order.city }}</td>
+    <td>{{ order.customer }}</td>
       {% if 'TODO_name.change_order' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:order_edit' order.id %}">Update</a> </td>
     {% endif %}

@@ -9,7 +9,6 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Pricelistitem</th>
     <th>Listnumber</th>
     <th>Activefromdate</th>
   {% if 'TODO_name.change_pricelist' in user.get_all_permissions %}
@@ -22,7 +21,6 @@
 
     {% for pricelist in object_list %}
    <tr>
-    <td>{{ pricelist.priceListItem }}</td>
     <td>{{ pricelist.listNumber }}</td>
     <td>{{ pricelist.activeFromDate }}</td>
       {% if 'TODO_name.change_pricelist' in user.get_all_permissions %}

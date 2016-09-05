@@ -9,9 +9,9 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Product</th>
     <th>Name</th>
     <th>Address</th>
+    <th>City</th>
   {% if 'TODO_name.change_vendor' in user.get_all_permissions %}
     <th>Update</th>
      {% endif %}
@@ -22,9 +22,9 @@
 
     {% for vendor in object_list %}
    <tr>
-    <td>{{ vendor.product }}</td>
     <td>{{ vendor.name }}</td>
     <td>{{ vendor.address }}</td>
+    <td>{{ vendor.city }}</td>
       {% if 'TODO_name.change_vendor' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:vendor_edit' vendor.id %}">Update</a> </td>
     {% endif %}

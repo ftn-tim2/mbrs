@@ -11,7 +11,7 @@
     <tr>
     <th>Name</th>
     <th>Address</th>
-    <th>Department</th>
+    <th>City</th>
   {% if 'TODO_name.change_enterprise' in user.get_all_permissions %}
     <th>Update</th>
      {% endif %}
@@ -24,7 +24,7 @@
    <tr>
     <td>{{ enterprise.name }}</td>
     <td>{{ enterprise.address }}</td>
-    <td>{{ enterprise.department }}</td>
+    <td>{{ enterprise.city }}</td>
       {% if 'TODO_name.change_enterprise' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:enterprise_edit' enterprise.id %}">Update</a> </td>
     {% endif %}

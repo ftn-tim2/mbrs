@@ -4,13 +4,9 @@ from django.contrib.auth.models import User
 
 
 class City(models.Model):
-    enterprise = models.ForeignKey(to='Enterprise')
+    state = models.ForeignKey(to='State')
     name = models.CharField(max_length=30, null=False)
     zipCode = models.CharField(max_length=12, null=False)
-    department = models.ForeignKey(to='Department')
-    vendor = models.ForeignKey(to='Vendor')
-    order = models.ForeignKey(to='Order')
-    customer = models.ForeignKey(to='Customer')
 
     class Meta:
         permissions = (
@@ -18,7 +14,7 @@ class City(models.Model):
         )
 
     def __str__(self):
-        return str(self.enterprise)
+        return str(self.state)
 
     def get_absolute_url(self):
         return reverse('TODO_name:city_edit', kwargs={'pk': self.pk})
@@ -27,7 +23,7 @@ class City(models.Model):
 class Enterprise(models.Model):
     name = models.CharField(max_length=50, null=False)
     address = models.CharField(max_length=150, null=False)
-    department = models.ForeignKey(to='Department')
+    city = models.ForeignKey(to='City')
 
     class Meta:
         permissions = (
@@ -42,7 +38,6 @@ class Enterprise(models.Model):
 
 
 class State(models.Model):
-    city = models.ForeignKey(to='City')
     name = models.CharField(max_length=25, null=False)
 
     class Meta:
@@ -51,7 +46,7 @@ class State(models.Model):
         )
 
     def __str__(self):
-        return str(self.city)
+        return str(self.name)
 
     def get_absolute_url(self):
         return reverse('TODO_name:state_edit', kwargs={'pk': self.pk})
@@ -60,7 +55,8 @@ class State(models.Model):
 class Department(models.Model):
     departmentName = models.CharField(max_length=20, editable=True, null=False)
     address = models.CharField(max_length=155, null=False)
-    stock = models.ForeignKey(to='Stock')
+    enterprise = models.ForeignKey(to='Enterprise')
+    city = models.ForeignKey(to='City')
 
     class Meta:
         permissions = (
@@ -75,9 +71,9 @@ class Department(models.Model):
 
 
 class Vendor(models.Model):
-    product = models.ForeignKey(to='Product')
     name = models.CharField(max_length=30, null=False)
     address = models.CharField(max_length=150, null=False)
+    city = models.ForeignKey(to='City')
 
     class Meta:
         permissions = (
@@ -85,13 +81,15 @@ class Vendor(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return str(self.name)
 
     def get_absolute_url(self):
         return reverse('TODO_name:vendor_edit', kwargs={'pk': self.pk})
 
 
 class OrderItem(models.Model):
+    order = models.ForeignKey(to='Order')
+    product = models.ForeignKey(to='Product')
     orderedQuantity = models.DecimalField(decimal_places=2, null=False, max_digits=15)
     available = models.DecimalField(decimal_places=2, null=True, max_digits=15)
     unitPrice = models.DecimalField(decimal_places=2, null=False, max_digits=15)
@@ -104,21 +102,20 @@ class OrderItem(models.Model):
         )
 
     def __str__(self):
-        return str(self.orderedQuantity)
+        return str(self.order)
 
     def get_absolute_url(self):
         return reverse('TODO_name:orderitem_edit', kwargs={'pk': self.pk})
 
 
 class Order(models.Model):
-    orderItem = models.ForeignKey(to='OrderItem')
-    payment = models.ForeignKey(to='Payment')
-    invoice = models.ForeignKey(to='Invoice')
     orderNumber = models.IntegerField(null=False)
     orderDate = models.DateTimeField(null=False)
     shipmentAddress = models.TextField(max_length=200, null=False)
     orderTotal = models.IntegerField(null=False)
     orderStatus = models.CharField(max_length=30, null=False, choices=(("ordering","ORDERING"),("finished","FINISHED"),("canceled","CANCELED"),("shipped","SHIPPED")))
+    city = models.ForeignKey(to='City')
+    customer = models.ForeignKey(to='Customer')
 
     class Meta:
         permissions = (
@@ -126,13 +123,15 @@ class Order(models.Model):
         )
 
     def __str__(self):
-        return str(self.orderItem)
+        return str(self.orderNumber)
 
     def get_absolute_url(self):
         return reverse('TODO_name:order_edit', kwargs={'pk': self.pk})
 
 
 class PriceListItem(models.Model):
+    product = models.ForeignKey(to='Product')
+    priceList = models.ForeignKey(to='PriceList')
     price = models.DecimalField(decimal_places=2, null=False, max_digits=10)
     tax = models.DecimalField(decimal_places=2, null=False, max_digits=10)
 
@@ -142,13 +141,14 @@ class PriceListItem(models.Model):
         )
 
     def __str__(self):
-        return str(self.price)
+        return str(self.product)
 
     def get_absolute_url(self):
         return reverse('TODO_name:pricelistitem_edit', kwargs={'pk': self.pk})
 
 
 class Payment(models.Model):
+    order = models.ForeignKey(to='Order')
     paymetMethod = models.CharField(max_length=50, choices=(("cash","CASH"),("creditCard","CREDITCARD"),("payPal","PAYPAL")))
     dateReceived = models.DateTimeField(null=False)
     amountReceived = models.DecimalField(max_length=9, decimal_places=2, null=False, max_digits=10)
@@ -160,13 +160,14 @@ class Payment(models.Model):
         )
 
     def __str__(self):
-        return str(self.paymetMethod)
+        return str(self.order)
 
     def get_absolute_url(self):
         return reverse('TODO_name:payment_edit', kwargs={'pk': self.pk})
 
 
 class Invoice(models.Model):
+    order = models.ForeignKey(to='Order')
     invoiceNumber = models.IntegerField(null=False)
     invoiceDate = models.DateTimeField()
     invoiceTotal = models.TextField(max_length=300, null=True)
@@ -178,7 +179,7 @@ class Invoice(models.Model):
         )
 
     def __str__(self):
-        return str(self.invoiceNumber)
+        return str(self.order)
 
     def get_absolute_url(self):
         return reverse('TODO_name:invoice_edit', kwargs={'pk': self.pk})
@@ -187,7 +188,7 @@ class Invoice(models.Model):
 class Customer(models.Model):
     name = models.CharField(max_length=31, null=False)
     address = models.CharField(max_length=51, null=False)
-    order = models.ForeignKey(to='Order')
+    city = models.ForeignKey(to='City')
 
     class Meta:
         permissions = (
@@ -202,7 +203,6 @@ class Customer(models.Model):
 
 
 class PriceList(models.Model):
-    priceListItem = models.ForeignKey(to='PriceListItem')
     listNumber = models.IntegerField(null=False)
     activeFromDate = models.DateTimeField(null=False)
 
@@ -212,14 +212,14 @@ class PriceList(models.Model):
         )
 
     def __str__(self):
-        return str(self.priceListItem)
+        return str(self.listNumber)
 
     def get_absolute_url(self):
         return reverse('TODO_name:pricelist_edit', kwargs={'pk': self.pk})
 
 
 class Stock(models.Model):
-    stockKeepingUnit = models.ForeignKey(to='StockKeepingUnit')
+    department = models.ForeignKey(to='Department')
     stockName = models.CharField(max_length=20, null=False)
     desription = models.TextField(max_length=255, null=True)
 
@@ -229,15 +229,16 @@ class Stock(models.Model):
         )
 
     def __str__(self):
-        return str(self.stockKeepingUnit)
+        return str(self.department)
 
     def get_absolute_url(self):
         return reverse('TODO_name:stock_edit', kwargs={'pk': self.pk})
 
 
 class Product(models.Model):
-    priceListItem = models.ForeignKey(to='PriceListItem')
-    orderItem = models.ForeignKey(to='OrderItem')
+    stockKeepingUnit = models.ForeignKey(to='StockKeepingUnit')
+    category = models.ForeignKey(to='Category')
+    vendor = models.ForeignKey(to='Vendor')
     productName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=255, null=True)
 
@@ -247,15 +248,14 @@ class Product(models.Model):
         )
 
     def __str__(self):
-        return str(self.priceListItem)
+        return str(self.stockKeepingUnit)
 
     def get_absolute_url(self):
         return reverse('TODO_name:product_edit', kwargs={'pk': self.pk})
 
 
 class Category(models.Model):
-    product = models.ForeignKey(to='Product')
-    category = models.ForeignKey(to='Category',blank=True, null=True, related_name='children')
+    subcategory = models.ForeignKey(to='Category',blank=True, null=True, related_name='children')
     categoryName = models.CharField(max_length=25, null=False)
     description = models.TextField(max_length=200, null=True)
 
@@ -265,14 +265,14 @@ class Category(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return str(self.subcategory)
 
     def get_absolute_url(self):
         return reverse('TODO_name:category_edit', kwargs={'pk': self.pk})
 
 
 class StockKeepingUnit(models.Model):
-    product = models.ForeignKey(to='Product')
+    stock = models.ForeignKey(to='Stock')
     available = models.DecimalField(decimal_places=2, null=False, max_digits=10)
     reserved = models.DecimalField(decimal_places=2, null=False, max_digits=10)
 
@@ -282,7 +282,7 @@ class StockKeepingUnit(models.Model):
         )
 
     def __str__(self):
-        return str(self.product)
+        return str(self.stock)
 
     def get_absolute_url(self):
         return reverse('TODO_name:stockkeepingunit_edit', kwargs={'pk': self.pk})

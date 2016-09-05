@@ -9,8 +9,9 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Pricelistitem</th>
-    <th>Orderitem</th>
+    <th>Stockkeepingunit</th>
+    <th>Category</th>
+    <th>Vendor</th>
     <th>Productname</th>
     <th>Description</th>
   {% if 'TODO_name.change_product' in user.get_all_permissions %}
@@ -23,8 +24,9 @@
 
     {% for product in object_list %}
    <tr>
-    <td>{{ product.priceListItem }}</td>
-    <td>{{ product.orderItem }}</td>
+    <td>{{ product.stockKeepingUnit }}</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.vendor }}</td>
     <td>{{ product.productName }}</td>
     <td>{{ product.description }}</td>
       {% if 'TODO_name.change_product' in user.get_all_permissions %}

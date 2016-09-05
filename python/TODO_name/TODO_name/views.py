@@ -24,7 +24,7 @@ import test
 class CityForm(ModelForm):
     class Meta:
         model = City
-        fields = ['enterprise', 'name', 'zipCode', 'department', 'vendor', 'order', 'customer']
+        fields = ['state', 'name', 'zipCode']
 
 
 @permission_required('TODO_name.view_city')
@@ -71,7 +71,7 @@ def city_delete(request, pk, template_name='TODO_name/city_confirm_delete.html')
 class EnterpriseForm(ModelForm):
     class Meta:
         model = Enterprise
-        fields = ['name', 'address', 'department']
+        fields = ['name', 'address', 'city']
 
 
 @permission_required('TODO_name.view_enterprise')
@@ -118,7 +118,7 @@ def enterprise_delete(request, pk, template_name='TODO_name/enterprise_confirm_d
 class StateForm(ModelForm):
     class Meta:
         model = State
-        fields = ['city', 'name']
+        fields = ['name']
 
 
 @permission_required('TODO_name.view_state')
@@ -165,7 +165,7 @@ def state_delete(request, pk, template_name='TODO_name/state_confirm_delete.html
 class DepartmentForm(ModelForm):
     class Meta:
         model = Department
-        fields = ['departmentName', 'address', 'stock']
+        fields = ['departmentName', 'address', 'enterprise', 'city']
 
 
 @permission_required('TODO_name.view_department')
@@ -212,7 +212,7 @@ def department_delete(request, pk, template_name='TODO_name/department_confirm_d
 class VendorForm(ModelForm):
     class Meta:
         model = Vendor
-        fields = ['product', 'name', 'address']
+        fields = ['name', 'address', 'city']
 
 
 @permission_required('TODO_name.view_vendor')
@@ -259,7 +259,7 @@ def vendor_delete(request, pk, template_name='TODO_name/vendor_confirm_delete.ht
 class OrderItemForm(ModelForm):
     class Meta:
         model = OrderItem
-        fields = ['orderedQuantity', 'available', 'unitPrice', 'unitTax', 'value']
+        fields = ['order', 'product', 'orderedQuantity', 'available', 'unitPrice', 'unitTax', 'value']
 
 
 @permission_required('TODO_name.view_orderitem')
@@ -306,7 +306,7 @@ def orderitem_delete(request, pk, template_name='TODO_name/orderitem_confirm_del
 class OrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['orderItem', 'payment', 'invoice', 'orderNumber', 'orderDate', 'shipmentAddress', 'orderTotal', 'orderStatus']
+        fields = ['orderNumber', 'orderDate', 'shipmentAddress', 'orderTotal', 'orderStatus', 'city', 'customer']
 
 
 @permission_required('TODO_name.view_order')
@@ -353,7 +353,7 @@ def order_delete(request, pk, template_name='TODO_name/order_confirm_delete.html
 class PriceListItemForm(ModelForm):
     class Meta:
         model = PriceListItem
-        fields = ['price', 'tax']
+        fields = ['product', 'priceList', 'price', 'tax']
 
 
 @permission_required('TODO_name.view_pricelistitem')
@@ -400,7 +400,7 @@ def pricelistitem_delete(request, pk, template_name='TODO_name/pricelistitem_con
 class PaymentForm(ModelForm):
     class Meta:
         model = Payment
-        fields = ['paymetMethod', 'dateReceived', 'amountReceived', 'canceled']
+        fields = ['order', 'paymetMethod', 'dateReceived', 'amountReceived', 'canceled']
 
 
 @permission_required('TODO_name.view_payment')
@@ -447,7 +447,7 @@ def payment_delete(request, pk, template_name='TODO_name/payment_confirm_delete.
 class InvoiceForm(ModelForm):
     class Meta:
         model = Invoice
-        fields = ['invoiceNumber', 'invoiceDate', 'invoiceTotal', 'canceled']
+        fields = ['order', 'invoiceNumber', 'invoiceDate', 'invoiceTotal', 'canceled']
 
 
 @permission_required('TODO_name.view_invoice')
@@ -494,7 +494,7 @@ def invoice_delete(request, pk, template_name='TODO_name/invoice_confirm_delete.
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ['name', 'address', 'order']
+        fields = ['name', 'address', 'city']
 
 
 @permission_required('TODO_name.view_customer')
@@ -541,7 +541,7 @@ def customer_delete(request, pk, template_name='TODO_name/customer_confirm_delet
 class PriceListForm(ModelForm):
     class Meta:
         model = PriceList
-        fields = ['priceListItem', 'listNumber', 'activeFromDate']
+        fields = ['listNumber', 'activeFromDate']
 
 
 @permission_required('TODO_name.view_pricelist')
@@ -588,7 +588,7 @@ def pricelist_delete(request, pk, template_name='TODO_name/pricelist_confirm_del
 class StockForm(ModelForm):
     class Meta:
         model = Stock
-        fields = ['stockKeepingUnit', 'stockName', 'desription']
+        fields = ['department', 'stockName', 'desription']
 
 
 @permission_required('TODO_name.view_stock')
@@ -635,7 +635,7 @@ def stock_delete(request, pk, template_name='TODO_name/stock_confirm_delete.html
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['priceListItem', 'orderItem', 'productName', 'description']
+        fields = ['stockKeepingUnit', 'category', 'vendor', 'productName', 'description']
 
 
 @permission_required('TODO_name.view_product')
@@ -682,7 +682,7 @@ def product_delete(request, pk, template_name='TODO_name/product_confirm_delete.
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = ['product', 'category', 'categoryName', 'description']
+        fields = ['subcategory', 'categoryName', 'description']
 
 
 @permission_required('TODO_name.view_category')
@@ -729,7 +729,7 @@ def category_delete(request, pk, template_name='TODO_name/category_confirm_delet
 class StockKeepingUnitForm(ModelForm):
     class Meta:
         model = StockKeepingUnit
-        fields = ['product', 'available', 'reserved']
+        fields = ['stock', 'available', 'reserved']
 
 
 @permission_required('TODO_name.view_stockkeepingunit')

@@ -9,7 +9,7 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Stockkeepingunit</th>
+    <th>Department</th>
     <th>Stockname</th>
     <th>Desription</th>
   {% if 'TODO_name.change_stock' in user.get_all_permissions %}
@@ -22,7 +22,7 @@
 
     {% for stock in object_list %}
    <tr>
-    <td>{{ stock.stockKeepingUnit }}</td>
+    <td>{{ stock.department }}</td>
     <td>{{ stock.stockName }}</td>
     <td>{{ stock.desription }}</td>
       {% if 'TODO_name.change_stock' in user.get_all_permissions %}

@@ -9,6 +9,7 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
+    <th>Order</th>
     <th>Paymetmethod</th>
     <th>Datereceived</th>
     <th>Amountreceived</th>
@@ -23,6 +24,7 @@
 
     {% for payment in object_list %}
    <tr>
+    <td>{{ payment.order }}</td>
     <td>{{ payment.paymetMethod }}</td>
     <td>{{ payment.dateReceived }}</td>
     <td>{{ payment.amountReceived }}</td>

@@ -11,7 +11,8 @@
     <tr>
     <th>Departmentname</th>
     <th>Address</th>
-    <th>Stock</th>
+    <th>Enterprise</th>
+    <th>City</th>
   {% if 'TODO_name.change_department' in user.get_all_permissions %}
     <th>Update</th>
      {% endif %}
@@ -24,7 +25,8 @@
    <tr>
     <td>{{ department.departmentName }}</td>
     <td>{{ department.address }}</td>
-    <td>{{ department.stock }}</td>
+    <td>{{ department.enterprise }}</td>
+    <td>{{ department.city }}</td>
       {% if 'TODO_name.change_department' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:department_edit' department.id %}">Update</a> </td>
     {% endif %}

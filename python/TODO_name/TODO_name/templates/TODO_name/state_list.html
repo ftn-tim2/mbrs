@@ -9,7 +9,6 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>City</th>
     <th>Name</th>
   {% if 'TODO_name.change_state' in user.get_all_permissions %}
     <th>Update</th>
@@ -21,7 +20,6 @@
 
     {% for state in object_list %}
    <tr>
-    <td>{{ state.city }}</td>
     <td>{{ state.name }}</td>
       {% if 'TODO_name.change_state' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:state_edit' state.id %}">Update</a> </td>

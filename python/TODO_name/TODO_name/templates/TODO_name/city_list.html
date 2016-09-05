@@ -9,13 +9,9 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Enterprise</th>
+    <th>State</th>
     <th>Name</th>
     <th>Zipcode</th>
-    <th>Department</th>
-    <th>Vendor</th>
-    <th>Order</th>
-    <th>Customer</th>
   {% if 'TODO_name.change_city' in user.get_all_permissions %}
     <th>Update</th>
      {% endif %}
@@ -26,13 +22,9 @@
 
     {% for city in object_list %}
    <tr>
-    <td>{{ city.enterprise }}</td>
+    <td>{{ city.state }}</td>
     <td>{{ city.name }}</td>
     <td>{{ city.zipCode }}</td>
-    <td>{{ city.department }}</td>
-    <td>{{ city.vendor }}</td>
-    <td>{{ city.order }}</td>
-    <td>{{ city.customer }}</td>
       {% if 'TODO_name.change_city' in user.get_all_permissions %}
  <td>     <a class="lsf-icon" title="edit" href="{% url 'TODO_name:city_edit' city.id %}">Update</a> </td>
     {% endif %}

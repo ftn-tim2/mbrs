@@ -9,6 +9,8 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
+    <th>Order</th>
+    <th>Product</th>
     <th>Orderedquantity</th>
     <th>Available</th>
     <th>Unitprice</th>
@@ -24,6 +26,8 @@
 
     {% for orderitem in object_list %}
    <tr>
+    <td>{{ orderitem.order }}</td>
+    <td>{{ orderitem.product }}</td>
     <td>{{ orderitem.orderedQuantity }}</td>
     <td>{{ orderitem.available }}</td>
     <td>{{ orderitem.unitPrice }}</td>

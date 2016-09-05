@@ -9,8 +9,7 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
-    <th>Product</th>
-    <th>Category</th>
+    <th>Subcategory</th>
     <th>Categoryname</th>
     <th>Description</th>
   {% if 'TODO_name.change_category' in user.get_all_permissions %}
@@ -23,8 +22,7 @@
 
     {% for category in object_list %}
    <tr>
-    <td>{{ category.product }}</td>
-    <td>{{ category.category }}</td>
+    <td>{{ category.subcategory }}</td>
     <td>{{ category.categoryName }}</td>
     <td>{{ category.description }}</td>
       {% if 'TODO_name.change_category' in user.get_all_permissions %}

@@ -9,6 +9,7 @@
 {% endblock %} {% block content %}
 <table class="table">
     <tr>
+    <th>Order</th>
     <th>Invoicenumber</th>
     <th>Invoicedate</th>
     <th>Invoicetotal</th>
@@ -23,6 +24,7 @@
 
     {% for invoice in object_list %}
    <tr>
+    <td>{{ invoice.order }}</td>
     <td>{{ invoice.invoiceNumber }}</td>
     <td>{{ invoice.invoiceDate }}</td>
     <td>{{ invoice.invoiceTotal }}</td>
