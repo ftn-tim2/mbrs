@@ -191,6 +191,11 @@ public class ModelAnalyzer {
             return parser.parse(property, _class);
         }
 
+        Stereotype foreignKeyStereoType = StereotypesHelper.getAppliedStereotypeByString(property, "ForeignKey");
+        if (foreignKeyStereoType != null) {
+            ObjectParser<ForeignKey> parser = new ObjectParser<>(new ForeignKeyStrategy());
+            return parser.parse(property, _class);
+        }
 
         ObjectParser<FMProperty> parser = new ObjectParser<>(new FMPropertyStrategy());
         return parser.parse(property, _class);
